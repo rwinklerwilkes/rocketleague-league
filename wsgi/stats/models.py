@@ -24,6 +24,14 @@ class Player(models.Model):
     class Meta:
         ordering = ['-player_last_name']
 
+    def update_stats(self):
+        gs = GameStats.objects.filter(player=self)
+        self.lifetime_goals = gs.aggregate(models.Sum('goals'))['goals__sum']
+        self.lifetime_assists = gs.aggregate(models.Sum('assists'))['assists__sum']
+        self.lifetime_saves = gs.aggregate(models.Sum('saves'))['saves__sum']
+        self.lifetime_shots = gs.aggregate(models.Sum('shots'))['shots__sum']
+        self.lifetime_points = gs.aggregate(models.Sum('points'))['points__sum']
+
     def get_absolute_url(self):
         return reverse('stats.views.player',args=[player_nickname])
 

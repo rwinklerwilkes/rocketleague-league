@@ -5,6 +5,9 @@ from .models import Game, GameStats
 # Create your views here.
 def index(request):
     players = Player.objects.all()
+    #update stats
+    for p in players:
+        p.update_stats()
     return render(request,'stats/index.html',{'players':players})
 
 def season(request,season_slug):
