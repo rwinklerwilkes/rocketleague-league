@@ -17,3 +17,17 @@ def week(request,season_slug,week_number):
     week = get_object_or_404(GameWeek,season=season,number=week_number)
     games = week.game_set.all().order_by('series_number')
     return render(request,'stats/week.html',{'season':season,'week':week,'games':games})
+
+def game(request,season_slug,week_number,ht,at,series_number):
+    season = get_object_or_404(Season,slug=season_slug)
+    week = get_object_or_404(GameWeek,season=season,number=week_number)
+    home = get_object_or_404(Team,key=ht)
+    away = get_object_or_404(Team,key=at)
+    game = get_object_or_404(Game,gameweek=week,series_number=series_number,home_team=home,away_team=away)
+    gs = game.gamestats_set.all()
+    rdict = {}
+    rdict['season'] = season
+    rdict['week'] = week
+    rdict['game'] = game
+    rdict['stats'] = gs
+    return render(request,'stats/game.html',rdict)
