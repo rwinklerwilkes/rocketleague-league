@@ -9,7 +9,7 @@
 <ul>
 {% for game in games %}
 
-<li>{{game}}
+<li><a href = "{% url 'stats:game' season.slug week.number game.home_team game.away_team game.series_number %}"> {{game}}</a></li>
 {% endfor %}
 </ul> 
 </div>

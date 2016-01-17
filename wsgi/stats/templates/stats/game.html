@@ -7,7 +7,7 @@
 <table summary = "Game Stats">
 <tr><th>Player</th><th>Goals</th><th>Assists</th><th>Saves</th><th>Shots</th><th>Points</th></tr>
 {% for gs in stats %}
-<tr><td>{{gs.goals}}</td><td>{{gs.assists}}</td><td>{{gs.saves}}</td><td>{{gs.shots}}</td><td>{{gs.points}}</td></tr>
+<tr><td>gs.player</td><td>{{gs.goals}}</td><td>{{gs.assists}}</td><td>{{gs.saves}}</td><td>{{gs.shots}}</td><td>{{gs.points}}</td></tr>
 
 {% endfor %}
 
