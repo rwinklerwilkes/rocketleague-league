@@ -1,21 +1,10 @@
-<<<<<<< HEAD
-=======
-#!/usr/bin/env python
-
->>>>>>> 464680f411b2aadf301d54db62c64e2728589cce
 import os
 import sys
 
-## GETTING-STARTED: make sure the next line points to your settings.py:
-<<<<<<< HEAD
 os.environ['DJANGO_SETTINGS_MODULE'] = 'rocketleague.settings'
 ## GETTING-STARTED: make sure the next line points to your django project dir:
 sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'rocketleague'))
-=======
-os.environ['DJANGO_SETTINGS_MODULE'] = 'myproject.settings'
-## GETTING-STARTED: make sure the next line points to your django project dir:
-sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'myproject'))
->>>>>>> 464680f411b2aadf301d54db62c64e2728589cce
+
 from distutils.sysconfig import get_python_lib
 os.environ['PYTHON_EGG_CACHE'] = get_python_lib()
 

@@ -1,1 +1,0 @@
-<li><a href ="{% url 'stats:game' season.slug week.number game.pk %}"></a></li>
