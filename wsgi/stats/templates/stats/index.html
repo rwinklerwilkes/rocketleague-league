@@ -1,0 +1,20 @@
+{% extends 'stats/base.html' %}
+
+{% block title %} Player Statistics {% endblock %}
+
+{% block content %}
+
+<h1> All Players </h1>
+{% for player in players %}
+<div class = "player">
+<h2> Player name: {{player.player_first_name}} {{player.player_last_name}} </h2>
+<ul>
+<li> Lifetime points: {{player.lifetime_points}}
+<li> Lifetime goals: {{player.lifetime_goals}}
+<li> Lifetime shots: {{player.lifetime_shots}}
+<li> Lifetime assists: {{player.lifetime_assists}}
+<li> Lifetime saves: {{player.lifetime_saves}}
+</ul> 
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'stats/base.html' %}
+
+{% block title %} Season {{season.name}} {% endblock %}
+
+{% block content %}
+
+<h1> Weeks </h1>
+<div class = "week">
+<ul>
+{% for week in weeks %}
+<li><a href ="{% url 'stats:week' season.slug week.number %}">Week {{week.number}} {{week.starts_at}} - {{week.ends_at}}</a></li>
+{% endfor %}
+</ul> 
+</div>
+{% endblock %}

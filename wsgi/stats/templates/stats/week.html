@@ -1,0 +1,16 @@
+{% extends 'stats/base.html' %}
+
+{% block title %} Week {{week.number}} {{week.starts_at}} - {{week.ends_at}}{{season.name}} {% endblock %}
+
+{% block content %}
+
+<h1> Games </h1>
+<div class = "games">
+<ul>
+{% for game in games %}
+
+<li>{{game}}
+{% endfor %}
+</ul> 
+</div>
+{% endblock %}
