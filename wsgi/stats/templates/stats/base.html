@@ -1,15 +1,40 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Plushiness 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20131117
+
+-->
 <html>
 	<head>
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static 'stats/default.css' %}"  media="all" />
+<link rel="stylesheet" type="text/css" href="{% static 'stats/fonts.css' %}" media="all" />
+<div id="header-wrapper">
+	<div id="header" class="container">
 		<meta charset="utf-8">
-			<title>
-				{% block title %}{% endblock %}
-			</title>
+			<title>{% block title %}{% endblock %}</title>
+			<h1>{% block h1 %} {% endblock %}</h1>
+</div>
+</div>
+
 	</head>
 	<body>
-		<div class = "content">
+		<div id = "wrapper"
+		<div class="style2">
 			{% block content %}
 			{% endblock %}
 		</div>
+</div>
+<div id="copyright" class="container">
+	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+</div>
 	</body>
 </html>
