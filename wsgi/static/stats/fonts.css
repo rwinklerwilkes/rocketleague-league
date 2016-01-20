@@ -64,7 +64,7 @@
 			font-feature-settings: "liga" 1, "dlig" 1;
 		}
 
-		.icon-glass:before                { content: "\f000"; }
+		.icon-soccer:before                { content: "\f1e3"; }
 		.icon-music:before                { content: "\f001"; }
 		.icon-search:before               { content: "\f002"; }
 		.icon-envelope:before             { content: "\f003"; }
