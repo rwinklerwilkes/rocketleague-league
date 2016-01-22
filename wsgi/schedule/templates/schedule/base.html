@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Plushiness 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20131117
+
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static 'stats/default.css' %}"  media="all" />
+<link rel="stylesheet" type="text/css" href="{% static 'stats/fonts.css' %}" media="all" />
+
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<span class="icon icon-soccer"></span>
+			<h1>{% block h1 %} {% endblock %}</h1>
+			<title>{% block title %}{% endblock %}</title>
+		</div>
+		<div id="triangle-up"></div>
+	</div>
+</div>
+</head>
+<body>
+<div id = "wrapper">
+	<a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">Login</a>
+			{% block content %}
+			{% endblock %}
+</div>
+<div id="copyright" class="container">
+	<p>&copy; Rich Winkler. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+</div>
+	</body>
+</html>
