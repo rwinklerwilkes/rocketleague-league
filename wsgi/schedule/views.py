@@ -13,7 +13,7 @@ def login(request):
         login(request,user)
         return HttpResponseRedirect('/main/')
     else:
-        #invalid
+        #invalid, redirect to login site
         return render(request,'schedule/login.html')
 
 def main(request):
