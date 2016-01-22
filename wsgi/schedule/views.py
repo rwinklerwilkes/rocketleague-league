@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 
 def login(request):
+    #get
     username = request.POST.get('username')
     password = request.POST.get('password')
     
