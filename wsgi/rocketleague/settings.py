@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 DJ_PROJECT_DIR = os.path.dirname(__file__)
 BASE_DIR = os.path.dirname(DJ_PROJECT_DIR)
-WSGI_DIR = os.path.join(BASE_DIR,'wsgi')
+WSGI_DIR = os.path.dirname(BASE_DIR)
 REPO_DIR = os.path.dirname(WSGI_DIR)
 DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR', BASE_DIR)
 
@@ -125,4 +125,4 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(WSGI_DIR, 'static')
 STATIC_URL ='/static/'
 
-STATICFILES_DIRS = [os.path.join(WSGI_DIR,'static//stats'),os.path.join(WSGI_DIR,'stats//static//')]
+STATICFILES_DIRS = [os.path.join(WSGI_DIR,'static//stats')]
