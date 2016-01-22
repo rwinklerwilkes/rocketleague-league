@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect
 
 def login(request):
     username = request.POST.get('username')
@@ -10,6 +11,10 @@ def login(request):
     if user is not None:
         #valid, log in
         login(request,user)
+        return HttpResponseRedirect('/main/')
     else:
         #invalid
-        pass
+        return render(request,'schedule/login.html')
+
+def main(request):
+    return render(request,'schedule/main.html')
