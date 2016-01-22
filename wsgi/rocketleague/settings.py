@@ -59,7 +59,7 @@ ROOT_URLCONF = 'rocketleague.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(WSGI_DIR,'rocketleague//templates'],
+        'DIRS': [os.path.join(WSGI_DIR,'rocketleague//templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
