@@ -59,7 +59,7 @@ ROOT_URLCONF = 'rocketleague.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(WSGI_DIR,'rocketleague//templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,4 +125,4 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(WSGI_DIR, 'static')
 STATIC_URL ='/static/'
 
-STATICFILES_DIRS = [os.path.join(WSGI_DIR,'wsgi//static//stats')]
+STATICFILES_DIRS = [os.path.join(WSGI_DIR,'wsgi//static//stats',os.path.join(WSGI_DIR,'wsgi//static//schedule'))]
