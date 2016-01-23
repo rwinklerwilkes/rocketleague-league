@@ -1,0 +1,18 @@
+{% extends 'schedule/base.html' %}
+
+{% block content %}
+    <p> Hi! </p>
+<div id="logout">
+        <form class="form-horizontal" name="LogoutForm" action="/schedule/logout/" method="post">
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn">Logout</button>
+            </div>
+        </div>
+        </form>
+   </div>
+{% endblock %}

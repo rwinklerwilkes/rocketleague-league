@@ -2,7 +2,7 @@
 
 {% block content %}
     <div id="login">
-        <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
+        <form class="form-horizontal" name="LoginForm" action="/schedule/login/" method="post">
         {% csrf_token %}
         {% if next %}
             <input type="hidden" name="next" value="{{ next }}" />
