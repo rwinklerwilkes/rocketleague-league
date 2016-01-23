@@ -18,6 +18,7 @@ from django.contrib import admin
 import schedule.views
 
 urlpatterns = [
+    url(r'^accounts/', include('registration.backends.hmac.urls')),
     url(r'^$',schedule.views.vw_login),
     url(r'^schedule/',include('schedule.urls',namespace='schedule')),
     url(r'^stats/',include('stats.urls',namespace='stats')),

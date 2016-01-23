@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 
 LOGIN_URL = '/schedule/login'
 
+ACCOUNT_ACTIVATION_DAYS = 3 #3 days to activate account once registered
+
+
 # Application definition
 
 INSTALLED_APPS = [
