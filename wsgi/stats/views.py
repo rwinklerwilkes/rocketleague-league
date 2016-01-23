@@ -9,9 +9,9 @@ def index(request):
 
 def players(request):
     players = Player.objects.all()
-##    #update stats
-##    for p in players:
-##        p.update_stats()
+    #update stats
+    for p in players:
+        p.update_stats()
     return render(request,'stats/players.html',{'players':players})
 
 def season(request,season_slug):

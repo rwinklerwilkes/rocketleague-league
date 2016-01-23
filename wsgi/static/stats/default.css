@@ -566,7 +566,9 @@ ul.contact li a.icon-rss:before
 
 #player-table {
 	border: 1px solid #DFDFDF;
-	width: 100%;
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
