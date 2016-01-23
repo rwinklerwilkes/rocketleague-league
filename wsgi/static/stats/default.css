@@ -561,6 +561,36 @@ ul.contact li a.icon-rss:before
 }
 
 /*********************************************************************************/
+/* Tables                                                                        */
+/*********************************************************************************/
+
+#player-table {
+	border: 1px solid #DFDFDF;
+	width: 100%;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#player-table td, #player-table th {
+	border-top-color: white;
+	border-bottom: 1px solid #DFDFDF;
+}
+
+#player-table th {
+	text-shadow: rgba(255, 255, 255, 0.796875) 0px 1px 0px;
+	padding: 7px 7px 8px;
+	text-align: left;
+	line-height: 1.3em;
+}
+
+#player-table td {
+	padding: 4px 7px 2px;
+	vertical-align: top;
+}
+
+
+/*********************************************************************************/
 /* Content                                                                       */
 /*********************************************************************************/
 

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Player Statistics {% endblock %}
+{% block h1 %} Player Statistics {% endblock %}
+
+{% block content %}
+
+<h1> All Players </h1>
+<table id = "player-table">
+<thead>
+	<th>Player Name</th>
+	<th>Points</th>
+	<th>Goals</th>
+	<th>Shots</th>
+	<th>Assists</th>
+	<th>Saves</th>
+</thead>
+<tbody>
+{% for player in players %}
+<tr>
+<td> {{player.player_nickname}} </td>
+<td> {{player.lifetime_points}} </td>
+<td> {{player.lifetime_goals}} </td>
+<td> {{player.lifetime_shots}} </td>
+<td> {{player.lifetime_assists}} </td>
+<td> {{player.lifetime_saves}} </td>
+
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

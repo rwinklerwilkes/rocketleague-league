@@ -4,11 +4,15 @@ from .models import Game, GameStats
 
 # Create your views here.
 def index(request):
+    season = Season.objects.all()
+    return render(request,'stats/index.html',{'season':season})
+
+def players(request):
     players = Player.objects.all()
-    #update stats
-    for p in players:
-        p.update_stats()
-    return render(request,'stats/index.html',{'players':players})
+##    #update stats
+##    for p in players:
+##        p.update_stats()
+    return render(request,'stats/players.html',{'players':players})
 
 def season(request,season_slug):
     season = get_object_or_404(Season,slug=season_slug)
