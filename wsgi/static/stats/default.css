@@ -103,7 +103,7 @@ a:hover
 /* Player formatting                                                             */
 /*********************************************************************************/
 
-.login
+.player
 {
   	width: 49%;                     /* poor approximation for old browsers    */
   	width: calc(49%);         /* standards-based answer for IE9+, FF16+ */
@@ -115,7 +115,7 @@ a:hover
 /* Login/registration formatting                                                 */
 /*********************************************************************************/
 
-.login, .register
+#login, #register
 {
 	width: 50%;
 	margin-left: auto;
