@@ -1,6 +1,6 @@
-import csv
+import csv, datetime
 
-from django.db.models import Q
+from django.db.models import Q, Max
 from .models import *
 
 #defines how a header should look
@@ -18,7 +18,15 @@ def import_games(path):
         test_header(header,game_hdr)
         for row in reader:
             season, season_created = Season.objects.get_or_create(slug=row[0])
-            week, week_created = GameWeek.objects.get_or_create(number=int(row[1]),season=season)
+            
+            #Get the previous week - we'll use the ends_at date to figure the next starts_at
+            previous_week = GameWeek.objects.get(number=int(row[1])-1)
+            #starts at - default value is 1 day after the latest end time
+            sad = previous_week.ends_at + datetime.timedelta(days=1)
+            #ends at - default value is 7 days after the start day
+            ead = sad + datetime.timedelta(days=7)
+            
+            week, week_created = GameWeek.objects.get_or_create(number=int(row[1]),season=season,starts_at=sad,ends_at=ead)
 
             #team should already exist
             home_team, ht_created = Team.objects.get_or_create(key=row[3])
@@ -55,7 +63,7 @@ def import_player_scores(path):
             player = Player.objects.get(player_nickname=row[3])
             t = player.player_team.key
             #find which game we need to add the stats to
-            game_result = Game.objects.get(Q(home_team__key=t)|Q(away_team__key=t),Q(series_number=row[2]))
+            game_result = Game.objects.get(Q(home_team__key=t)|Q(away_team__key=t),Q(series_number=row[2]),Q(gameweek__number=week.number))
 
             gs_defaults = {'goals':int(row[5]),'assists':int(row[6]),'saves':int(row[7]),'shots':int(row[8]),'points':int(row[4])}
             gamestats,gs_created = GameStats.objects.get_or_create(game=game_result,player=player,defaults=gs_defaults)
