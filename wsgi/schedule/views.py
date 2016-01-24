@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 from schedule.forms import UserForm, PlayerForm
+from stats.models import Player, GameStats, Game
 
 def register(request):
     #will set to true if registration is successful
@@ -65,7 +67,13 @@ def vw_login(request):
 
 @login_required
 def main(request):
-    return render(request,'schedule/main.html')
+    user = request.user
+    #which player is the user?
+    player = user.player
+    #what are their stats?
+    gs = GameStats.objects.filter(player=player)
+    
+    return render(request,'schedule/main.html',{'stats':gs,player:'player',user:'user'})
 
 def vw_logout(request):
     logout(request)

@@ -23,8 +23,8 @@ def import_games(path):
             previous_week = GameWeek.objects.get(number=int(row[1])-1)
             #starts at - default value is 1 day after the latest end time
             sad = previous_week.ends_at + datetime.timedelta(days=1)
-            #ends at - default value is 7 days after the start day
-            ead = sad + datetime.timedelta(days=7)
+            #ends at - default value is 6 days after the start day
+            ead = sad + datetime.timedelta(days=6)
             
             week, week_created = GameWeek.objects.get_or_create(number=int(row[1]),season=season,starts_at=sad,ends_at=ead)
 

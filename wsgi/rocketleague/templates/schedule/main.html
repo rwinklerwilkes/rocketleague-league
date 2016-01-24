@@ -1,7 +1,38 @@
 {% extends 'base.html' %}
 
+{% block title %} Player Homepage {% endblock %}
+{% block h1 %} {{player.player_nickname}} {% endblock %}
+
 {% block content %}
-    <p> Hi! </p>
+    <p> Hi {{player.player_nickname}}! </p>
+
+<h1> All Stats </h1>
+<table id = "player-table">
+<thead>
+	<th>Season</th>
+	<th>Week</th>
+	<th>Game</th>
+	<th>Points</th>
+	<th>Goals</th>
+	<th>Shots</th>
+	<th>Assists</th>
+	<th>Saves</th>
+</thead>
+<tbody>
+{% for row in stats %}
+<tr>
+<td>{{row.game.gameweek.season.slug}}</td>
+<td>{{row.game.gameweek.number}}</td>
+<td>{{row.game.series_number}}</td>
+<td>{{row.points}}</td>
+<td>{{row.goals}}</td>
+<td>{{row.shots}}</td>
+<td>{{row.assists}}</td>
+<td>{{row.saves}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</div>
 <div id="logout">
         <form class="form-horizontal" name="LogoutForm" action="/schedule/logout/" method="post">
         {% csrf_token %}
