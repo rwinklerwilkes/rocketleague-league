@@ -2,7 +2,7 @@
 
 {% block content %}
     <div id="login">
-        <form class="form-horizontal" name="LoginForm" action="/schedule/login/" method="post">
+        <form class="form-horizontal" name="LoginForm" action="{% url 'schedule:login' %}" method="post">
         {% csrf_token %}
         {% if next %}
             <input type="hidden" name="next" value="{{ next }}" />
@@ -26,6 +26,6 @@
         </div>
         </form>
 
-	<a href="schedule/register/"> Register Here </a>
+	<a href="{% url 'schedule:register' %}"> Register Here </a>
     </div>
 {% endblock %}

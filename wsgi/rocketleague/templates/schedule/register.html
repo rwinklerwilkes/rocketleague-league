@@ -6,11 +6,11 @@
 
 	{% if registered %}
 	<p> Thank you for registering! </p>
-	<a href="/schedule/main/"> Main site </a><br />
+	<a href="{ % url 'schedule:main' %}"> Main site </a><br />
 
 	{% else %}
 	<p> Register here! </p></br>
-	<form id="user_form" method="post" action="/schedule/register/" enctype="multipart/form-data">
+	<form id="user_form" method="post" action="{ % url 'schedule:register' %}" enctype="multipart/form-data">
 		{% csrf_token %}
 		<!-- Display each form, wrap the form as p so each gets a new line -->
 		{{ user_form.as_p  }}
