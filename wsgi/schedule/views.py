@@ -73,7 +73,7 @@ def main(request):
     #what are their stats?
     gs = GameStats.objects.filter(player=player)
     
-    return render(request,'schedule/main.html',{'stats':gs,player:'player',user:'user'})
+    return render(request,'schedule/main.html',{'stats':gs,'player':player,'user':user})
 
 def vw_logout(request):
     logout(request)
