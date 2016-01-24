@@ -117,8 +117,9 @@ a:hover
 
 .login, .register
 {
-	text-align: center;
-	min-height: 10em;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
