@@ -36,8 +36,13 @@ Released   : 20131117
 		<div id="menu">
 			<ul>
 				<li class="current_page_item"><a href="/"  accesskey="1" title="">Homepage</a></li>
-				<li><a href="/stats/" accesskey="2" title="">Stats</a></li>
-				<li><a href="/stats/players" accesskey="3" title="">Players</a></li>
+				<li><a href="{% url 'stats' %}" accesskey="2" title="">Stats</a></li>
+				<li><a href="{% url 'stats:players' %}" accesskey="3" title="">Players</a></li>
+				{% if user.is_authenticated %}
+				<li><a href="{% url 'schedule:logout' %}" accesskey="4" title="">Logout</a></li>
+				{% else %}
+				<li><a href="{% url 'schedule:login' %}" accesskey="4" title="">Login</a></li>
+				{% endif %}
 			</ul>
 		</div>
 </div>

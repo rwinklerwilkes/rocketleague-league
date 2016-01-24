@@ -19,7 +19,7 @@ import schedule.views
 
 urlpatterns = [
     url(r'^accounts/', include('registration.backends.hmac.urls')),
-    url(r'^$',schedule.views.vw_login),
+    url(r'^$',schedule.views.vw_login,name='stats'),
     url(r'^schedule/',include('schedule.urls',namespace='schedule')),
     url(r'^stats/',include('stats.urls',namespace='stats')),
     url(r'^admin/', admin.site.urls),
