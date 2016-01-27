@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from schedule.forms import UserForm, PlayerForm
@@ -79,14 +79,17 @@ def main(request):
 @login_required
 def chart_data(request):
     if request.method == 'GET':
-        player = user.player
-        gs = Gamestats.objects.filter(player=player)
+        player = request.user.player
+        gs = GameStats.objects.filter(player=player)
         season = request.GET['season']
         week = request.GET['week']
         out = request.GET['out']
 
         #outstats should only be the stats that we care about
-        getstats = [g for g in gs if g.game.gameweek.number==week and g.game.gameweek.season.slug == season]
+        getstats = [g for g in gs if g.game.gameweek.season.slug == season]
+
+        if week != 'All':
+            getstats = [g for g in getstats if g.game.gameweek.number==week]
 
         #use getattr to get the stat that we care about
         returnstats = []
@@ -95,12 +98,13 @@ def chart_data(request):
             cur_it = []
             cur_it.append(str(gsrow.game.gameweek.number) + str(gsrow.game.series_number))
             cur_it.append(getattr(gsrow,out))
+            returnstats.append(cur_it)
 
         rdict = {'stats':returnstats}
 
     else:
         rdict = {'stats':[]}
-    return HttpResponse(json.dumps(rdict),mimetype='application/json')
+    return JsonResponse(rdict)
 
 def vw_logout(request):
     logout(request)
