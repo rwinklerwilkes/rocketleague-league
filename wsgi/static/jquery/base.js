@@ -59,9 +59,12 @@ function drawChart(dataFromServer) {
 	var data = new google.visualization.DataTable();
 	
 	var stats = dataFromServer['stats'];
+	console.log(stats);
 
 	var col1 = stats[0][0];
+	console.log(col1)
 	var col2 = stats[0][1];
+	console.log(col2)
 	data.addColumn('string',col1);
 	data.addColumn('number',col2);
 	

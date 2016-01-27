@@ -71,10 +71,24 @@ def main(request):
     user = request.user
     #which player is the user?
     player = user.player
+    player.update_stats()
     #what are their stats?
     gs = GameStats.objects.filter(player=player)
+
+    seasons = []
+    weeks = []
+    #get unique seasons and weeks
+    for row in gs:
+        cur_w = row.game.gameweek.number
+        if cur_w not in weeks:
+            weeks.append(cur_w)
+        cur_s = row.game.gameweek.season.slug
+        if cur_s not in seasons:
+            seasons.append(cur_s)
+    sorted(weeks)
+    sorted(seasons)
     
-    return render(request,'schedule/main.html',{'stats':gs,'player':player,'user':user})
+    return render(request,'schedule/main.html',{'stats':gs,'player':player,'user':user,'weeks':weeks,'seasons':seasons})
 
 @login_required
 def chart_data(request):

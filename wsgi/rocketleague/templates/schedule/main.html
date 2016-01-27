@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block extra_header %}
 
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+<!-- load AJAX API -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- Javascript to create chart for google -->
+<script type = "text/javascript" src = "{% static 'jquery/base.js' %}"></script>
 {% endblock %}
 
 {% block title %} Player Homepage {% endblock %}
@@ -10,49 +20,93 @@
 
 
 {% block content %}
-    <p> Hi {{player.player_nickname}}! </p>
+<div class="row">
 
-<h1> All Stats </h1>
-<table id = "player-table">
-<thead>
-	<th>Season</th>
-	<th>Week</th>
-	<th>Game</th>
-	<th>Points</th>
-	<th>Goals</th>
-	<th>Shots</th>
-	<th>Assists</th>
-	<th>Saves</th>
-</thead>
-<tbody>
-{% for row in stats %}
-<tr>
-<td>{{row.game.gameweek.season.slug}}</td>
-<td>{{row.game.gameweek.number}}</td>
-<td>{{row.game.series_number}}</td>
-<td>{{row.points}}</td>
-<td>{{row.goals}}</td>
-<td>{{row.shots}}</td>
-<td>{{row.assists}}</td>
-<td>{{row.saves}}</td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
-
-<div id="chart_div"></div>
-
+<!--
+	<h1> All Stats </h1>
+	<table id = "player-table">
+	<thead>
+		<th>Season</th>
+		<th>Week</th>
+		<th>Game</th>
+		<th>Points</th>
+		<th>Goals</th>
+		<th>Shots</th>
+		<th>Assists</th>
+		<th>Saves</th>
+	</thead>
+	<tbody>
+	{% for row in stats %}
+	<tr>
+	<td>{{row.game.gameweek.season.slug}}</td>
+	<td>{{row.game.gameweek.number}}</td>
+	<td>{{row.game.series_number}}</td>
+	<td>{{row.points}}</td>
+	<td>{{row.goals}}</td>
+	<td>{{row.shots}}</td>
+	<td>{{row.assists}}</td>
+	<td>{{row.saves}}</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+	</table>
+-->
+	<div class="col-md-6 col-md-offset-6">
+		<div class="btn-group" role="group" aria-label="...">
+			<div class="btn-group" role="group">
+				<button class="btn btn-default dropdown-toggle" type="button" id="season-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Season
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" id="season-dropdown">
+					{% for s in seasons %}
+						<li><a href='#'>{{ s }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="btn-group" role="group">
+				<button class="btn btn-default dropdown-toggle" type="button" id="week-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Week
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" id="week-dropdown">
+					<li><a href='#'>All</a></li>
+					{% for w in weeks %}
+						<li><a href='#'>{{ w }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="thumbnail">
+			<img src="{% static 'img/av.jpg' %}" />
+			<div class="caption">
+				<h4>Sneakypriest</h4>
+				<p> Lifetime Goals: {{ player.lifetime_goals }} </p>
+				<p> Lifetime Assists: {{ player.lifetime_assists }} </p>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div id="chart_div"></div>
+	</div>
+</div>
+<div class="row">
 <div id="logout">
-        <form class="form-horizontal" name="LogoutForm" action="/schedule/logout/" method="post">
-        {% csrf_token %}
-        {% if next %}
-            <input type="hidden" name="next" value="{{ next }}" />
-        {% endif %}
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" class="btn">Logout</button>
-            </div>
-        </div>
-        </form>
-   </div>
+	<form class="form-horizontal" name="LogoutForm" action="/schedule/logout/" method="post">
+		{% csrf_token %}
+		{% if next %}
+			<input type="hidden" name="next" value="{{ next }}" />
+		{% endif %}
+	<div class="control-group">
+		<div class="controls">
+			<button type="submit" class="btn">Logout</button>
+		</div>
+	</div>
+	</form>
+	</div>
+  </div>
 {% endblock %}
