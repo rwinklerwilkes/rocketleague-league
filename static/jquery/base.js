@@ -43,16 +43,29 @@ $(document).ready(function () {
 google.load('visualization','1.0',{'packages':['corechart']});
 google.setOnLoadCallback(drawChart);
 
+$(document).ready(function () {
+	$.ajax(
+	{
+	type:'GET',
+	url:'/schedule/chart_data/',
+	data:{'season':201601,'week':'All','out':'goals'},
+	success:drawChart(dataFromServer)
+	}
+	)
+}
+
 //creates and populates data table, instantiates chart, passes in data, and draws
-function drawChart() {
+function drawChart(dataFromServer) {
 	var data = new google.visualization.DataTable();
+	var d = JSON.parse(dataFromServer)
+	var stats = d['stats']
 
-	data.addColumn('number','X');
-	data.addColumn('number','SneakyPriest');
-
-	data.addRows([
-	[1,100],[2,200],[3,300],[4,400],[5,500]
-	]);
+	data.addColumn('number',stats[0][0]);
+	data.addColumn('number',stats[0][1]);
+	
+	for (i=1;i<stats.length;i++) {
+		data.addRow(stats[i]);
+	}
 
 	var options = {
 	width: $(window).width()/3,

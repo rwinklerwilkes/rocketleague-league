@@ -404,15 +404,6 @@ ul.contact li a.icon-rss:before
 	{
 	}
 
-#triangle-up {
-	margin: 0 auto;
-	width: 0;
-	height: 0;
-	border-left: 60px solid transparent;
-	border-right: 60px solid transparent;
-	border-bottom: 30px solid #3D3D3D;
-}
-
 /*********************************************************************************/
 /* Logo                                                                          */
 /*********************************************************************************/
@@ -713,7 +704,6 @@ ul.contact li a.icon-rss:before
 
 #featured-wrapper
 {
-	height: 3000px;
 	overflow: hidden;
 	padding-top: 2em;
 	padding-bottom: 6em;

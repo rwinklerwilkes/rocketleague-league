@@ -24,9 +24,9 @@ Released   : 20131117
 <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}"  media="all" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" media="all" />
 
-</head>
-<body>
-
+{% block extra_header %}
+{% endblock %}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -35,8 +35,12 @@ Released   : 20131117
 <!-- load AJAX API -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
-<!-- jQuery base script, controls rollover -->
+<!-- Javascript to create chart for google -->
 <script type = "text/javascript" src = "{% static 'jquery/base.js' %}"></script>
+
+</head>
+<body>
+
 
 <div class = 'container'>
 	<div id="header-wrapper">
