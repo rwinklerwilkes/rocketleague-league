@@ -65,10 +65,10 @@ class Game(models.Model):
     series_number = models.PositiveSmallIntegerField(default=1)
 
     home_team = models.ForeignKey(Team,related_name='home_games')
-    home_team_score = models.PositiveSmallIntegerField()
+    home_team_score = models.PositiveSmallIntegerField(default=0)
 
     away_team = models.ForeignKey(Team,related_name='away_games')
-    away_team_score = models.PositiveSmallIntegerField()
+    away_team_score = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
         return '%s vs. %s Game %i'%(self.home_team,self.away_team,self.series_number)
@@ -77,11 +77,11 @@ class GameStats(models.Model):
     game = models.ForeignKey(Game)
     player = models.ForeignKey(Player)
 
-    goals = models.PositiveIntegerField()
-    assists = models.PositiveIntegerField()
-    saves = models.PositiveIntegerField()
-    shots = models.PositiveIntegerField()
-    points = models.PositiveIntegerField()
+    goals = models.PositiveIntegerField(default=0)
+    assists = models.PositiveIntegerField(default=0)
+    saves = models.PositiveIntegerField(default=0)
+    shots = models.PositiveIntegerField(default=0)
+    points = models.PositiveIntegerField(default=0)
 
     class Meta:
         unique_together = [('game','player')]

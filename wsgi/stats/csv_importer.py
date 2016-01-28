@@ -147,6 +147,7 @@ def import_file(path):
 def import_2():
     p = os.environ.get('OPENSHIFT_REPO_DIR')
     p = os.path.join(p,'data')
+    p = os.path.join(p,'historical')
     p = os.path.join(p,'Season 1.csv')
     import_file(p)
         
