@@ -888,6 +888,7 @@ ul.contact li a.icon-rss:before
 	position: absolute;
 	top: 150px;
 	right: 0;
+	left:0;
 }
 
 #slider .indicator
