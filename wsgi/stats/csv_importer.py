@@ -121,7 +121,7 @@ def import_file(path):
                 assert gs.saves == int(row[10])
                 assert gs.shots == int(row[11])
             else:
-		players_modified.append(gs.player)
+                players_modified.append(gs.player)
                 gs.points = int(row[7])
                 gs.goals = int(row[8])
                 gs.assists = int(row[9])
@@ -143,6 +143,13 @@ def import_file(path):
 
     for p in players_modified:
         p.update_stats()
+
+def import():
+    p = os.environ.get('OPENSHIFT_REPO_DIR')
+    p = os.path.join(p,'data')
+    p = os.path.join(p,'Season 1.csv')
+    import_file(p)
+        
 ##
 ##def import_games(path):
 ##    game_hdr=['Season','Week','Game','Home Team','Away Team','Home Team Score','Away Team Score']
