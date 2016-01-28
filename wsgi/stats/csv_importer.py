@@ -121,7 +121,7 @@ def import_file(path):
                 assert gs.saves == int(row[10])
                 assert gs.shots == int(row[11])
             else:
-				players_modified.append(gs.player)
+		players_modified.append(gs.player)
                 gs.points = int(row[7])
                 gs.goals = int(row[8])
                 gs.assists = int(row[9])
@@ -141,7 +141,7 @@ def import_file(path):
             g.outcome = 'T'
         g.save()
 
-    for p in players_modified():
+    for p in players_modified:
         p.update_stats()
 ##
 ##def import_games(path):
