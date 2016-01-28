@@ -14,6 +14,10 @@ echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/manage.py migrate --noinput'"
 # GETTING-STARTED: change 'myproject' to your project name:
 python "$OPENSHIFT_REPO_DIR"wsgi/manage.py migrate --noinput
 
+# Sync DB
+echo "Executing 'python ${OPENSHIFT_REPO_DIR}mywebsite/manage.py syncdb --noinput'"
+python "$OPENSHIFT_REPO_DIR"wsgi/manage.py syncdb --noinput
+
 # GETTING-STARTED: change 'myproject' to your project name:
 echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/manage.py collectstatic --noinput'"
 # GETTING-STARTED: change 'myproject' to your project name:
