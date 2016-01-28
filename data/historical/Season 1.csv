@@ -1,0 +1,73 @@
+GameKey,Season,Week,Game,Team,Result,Player,Score,Goals,Assists,Saves,Shots
+20160111CD,201601,1,1,Team C BeMore,2,Steve Wellard,225,1,0,0,2
+20160111CD,201601,1,1,Team C BeMore,2,Ed Culbertson,165,1,0,0,3
+20160111CD,201601,1,1,Team D Rocket,1,Rich Winkler,245,0,1,2,4
+20160111CD,201601,1,1,Team D Rocket,1,J Dunn,165,1,0,0,2
+20160112CD,201601,1,2,Team D Rocket,3,Rich Winkler,395,2,1,1,5
+20160112CD,201601,1,2,Team D Rocket,3,J Dunn,280,1,1,1,4
+20160112CD,201601,1,2,Team C BeMore,2,Ed Culbertson,220,2,0,1,4
+20160112CD,201601,1,2,Team C BeMore,2,Steve Wellard,200,0,1,2,2
+20160113CD,201601,1,3,Team C BeMore,5,Steve Wellard,425,3,1,0,6
+20160113CD,201601,1,3,Team C BeMore,5,Ed Culbertson,240,2,1,0,2
+20160113CD,201601,1,3,Team D Rocket,1,Rich Winkler,205,1,0,1,1
+20160113CD,201601,1,3,Team D Rocket,1,J Dunn,85,0,1,1,0
+20160111AB,201601,1,1,Team A Tailpipe,1,Jacob Rothschild,255,1,0,2,2
+20160111AB,201601,1,1,Team A Tailpipe,1,Travis Williams,75,0,1,0,1
+20160111AB,201601,1,1,Team B Dark Horse-NBC,0,Charles Culbertson,145,0,0,0,3
+20160111AB,201601,1,1,Team B Dark Horse-NBC,0,Ryan Morgado,45,0,0,0,0
+20160112AB,201601,1,2,Team A Tailpipe,3,Jacob Rothschild,380,2,0,2,3
+20160112AB,201601,1,2,Team A Tailpipe,3,Travis Williams,155,1,0,0,1
+20160112AB,201601,1,2,Team B Dark Horse-NBC,2,Charles Culbertson,180,1,0,0,3
+20160112AB,201601,1,2,Team B Dark Horse-NBC,2,Ryan Morgado,180,1,0,1,2
+20160113AB,201601,1,3,Team A Tailpipe,1,Jacob Rothschild,315,1,0,3,2
+20160113AB,201601,1,3,Team A Tailpipe,1,Travis Williams,40,0,0,0,1
+20160113AB,201601,1,3,Team B Dark Horse-NBC,5,Charles Culbertson,540,4,0,2,7
+20160113AB,201601,1,3,Team B Dark Horse-NBC,5,Ryan Morgado,170,1,1,0,2
+20160121AC,201601,2,1,Team C BeMore,2,Steve Wellard,250,1,0,1,3
+20160121AC,201601,2,1,Team C BeMore,2,Ed Culbertson,175,1,0,0,3
+20160121AC,201601,2,1,Team A Tailpipe,0,Jacob Rothschild,240,0,0,3,1
+20160121AC,201601,2,1,Team A Tailpipe,0,Travis Williams,20,0,0,0,0
+20160122AC,201601,2,2,Team C BeMore,3,Steve Wellard,330,1,2,0,4
+20160122AC,201601,2,2,Team C BeMore,3,Ed Culbertson,225,2,0,0,3
+20160122AC,201601,2,2,Team A Tailpipe,1,Jacob Rothschild,225,1,0,2,1
+20160122AC,201601,2,2,Team A Tailpipe,1,Travis Williams,10,0,0,0,0
+20160123AC,201601,2,3,Team A Tailpipe,4,Jacob Rothschild,515,4,0,2,5
+20160123AC,201601,2,3,Team A Tailpipe,4,Travis Williams,75,0,1,0,0
+20160123AC,201601,2,3,Team C BeMore,1,Steve Wellard,185,1,0,0,4
+20160123AC,201601,2,3,Team C BeMore,1,Ed Culbertson,85,0,0,0,1
+20160121BD,201601,2,1,Team B Dark Horse-NBC,1,Ryan Morgado,205,1,0,1,3
+20160121BD,201601,2,1,Team B Dark Horse-NBC,1,Charles Culbertson,100,0,0,0,4
+20160121BD,201601,2,1,Team D Rocket,4,Rich Winkler,495,4,0,3,4
+20160121BD,201601,2,1,Team D Rocket,4,J Dunn,150,0,1,1,1
+20160122BD,201601,2,2,Team B Dark Horse-NBC,2,Ryan Morgado,335,2,0,3,1
+20160122BD,201601,2,2,Team B Dark Horse-NBC,2,Charles Culbertson,125,0,0,1,2
+20160122BD,201601,2,2,Team D Rocket,5,Rich Winkler,460,3,1,2,4
+20160122BD,201601,2,2,Team D Rocket,5,J Dunn,305,2,1,1,5
+20160123BD,201601,2,3,Team B Dark Horse-NBC,2,Ryan Morgado,255,2,0,2,4
+20160123BD,201601,2,3,Team B Dark Horse-NBC,2,Charles Culbertson,145,0,2,0,2
+20160123BD,201601,2,3,Team D Rocket,7,Rich Winkler,645,6,0,3,5
+20160123BD,201601,2,3,Team D Rocket,7,J Dunn,285,1,2,0,5
+20160131AD,201601,3,1,Team A Tailpipe,1,Jacob Rothschild,650,3,0,2,4
+20160131AD,201601,3,1,Team A Tailpipe,1,Travis Williams,230,0,1,0,2
+20160131AD,201601,3,1,Team D Rocket,4,Rich Winkler,720,3,1,1,8
+20160131AD,201601,3,1,Team D Rocket,4,J Dunn,325,1,1,1,5
+20160132AD,201601,3,2,Team A Tailpipe,3,Jacob Rothschild,440,3,0,1,5
+20160132AD,201601,3,2,Team A Tailpipe,3,Travis Williams,10,0,0,0,0
+20160132AD,201601,3,2,Team D Rocket,4,Rich Winkler,420,3,0,1,4
+20160132AD,201601,3,2,Team D Rocket,4,J Dunn,200,1,0,0,3
+20160133AD,201601,3,3,Team A Tailpipe,2,Jacob Rothschild,235,1,0,2,2
+20160133AD,201601,3,3,Team A Tailpipe,2,Travis Williams,145,1,1,0,1
+20160133AD,201601,3,3,Team D Rocket,7,Rich Winkler,520,5,0,0,7
+20160133AD,201601,3,3,Team D Rocket,7,J Dunn,300,2,2,0,5
+20160131BC,201601,3,1,Team B Dark Horse-NBC,1,Ryan Morgado,115,0,0,1,1
+20160131BC,201601,3,1,Team B Dark Horse-NBC,1,Charles Culbertson,235,1,0,1,4
+20160131BC,201601,3,1,Team C BeMore,2,Steve Wellard,230,2,0,2,4
+20160131BC,201601,3,1,Team C BeMore,2,Ed Culbertson,100,0,1,0,1
+20160132BC,201601,3,2,Team B Dark Horse-NBC,3,Ryan Morgado,130,1,0,0,1
+20160132BC,201601,3,2,Team B Dark Horse-NBC,3,Charles Culbertson,260,2,0,0,2
+20160132BC,201601,3,2,Team C BeMore,2,Steve Wellard,260,2,0,0,2
+20160132BC,201601,3,2,Team C BeMore,2,Ed Culbertson,0,0,0,0,0
+20160133BC,201601,3,3,Team B Dark Horse-NBC,2,Ryan Morgado,175,1,0,2,0
+20160133BC,201601,3,3,Team B Dark Horse-NBC,2,Charles Culbertson,175,1,0,0,3
+20160133BC,201601,3,3,Team C BeMore,0,Steve Wellard,130,0,0,1,3
+20160133BC,201601,3,3,Team C BeMore,0,Ed Culbertson,90,0,0,0,1
