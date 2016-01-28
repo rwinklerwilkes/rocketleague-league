@@ -24,7 +24,7 @@ def parse_key(key):
 #rewrite import processes to better handle files
 def import_file(path):
     game_hdr=['GameKey','Season','Week','Game','Team','Result','Player','Score','Goals','Assists','Saves','Shots']
-	players_modified = []
+    players_modified = []
     
     with open(path) as f:
         reader = csv.reader(f)
