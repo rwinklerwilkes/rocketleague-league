@@ -144,7 +144,7 @@ def import_file(path):
     for p in players_modified:
         p.update_stats()
 
-def import():
+def import_2():
     p = os.environ.get('OPENSHIFT_REPO_DIR')
     p = os.path.join(p,'data')
     p = os.path.join(p,'Season 1.csv')
