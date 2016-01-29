@@ -97,7 +97,11 @@ def chart_data(request):
         gs = GameStats.objects.filter(player=player)
         getstats = gs
         season = request.GET['season']
-        week = request.GET['week']
+        #it will either be converted to an int or I'll grab all of them instead
+        try:
+            week = int(request.GET['week'])
+        except:
+            week = 'All'
         out = request.GET['out']
 
         if season != 'All':
