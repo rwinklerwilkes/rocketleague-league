@@ -88,7 +88,7 @@
 				<div class="row">
 					<form class="form-horizontal" id="ProfilePicForm" method="post" action="{% url 'schedule:main' %}" enctype="multipart/form-data">
 					{% csrf_token %}
-					{{ pic_form }}
+					{{ pic_form.as_p }}
 					<input class="uploadButton" type="submit" name="picsubmit" value="Upload Image" />
 					</form>
 				</div>
