@@ -95,6 +95,7 @@ def chart_data(request):
     if request.method == 'GET':
         player = request.user.player
         gs = GameStats.objects.filter(player=player)
+        getstats = gs
         season = request.GET['season']
         week = request.GET['week']
         out = request.GET['out']
