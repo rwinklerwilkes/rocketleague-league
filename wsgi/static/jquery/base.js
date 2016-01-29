@@ -109,10 +109,10 @@ $(function() {
 		var otBtn = $('.btn#' + other);
 		
 		if (other == 'season-dropdown') {
-			chartData(otBtn.text(),$(this.text()),'goals');
+			chartData(otBtn.text(),$(this).text(),'goals');
 		}
 		else {
-			chartData($(this.text()),otBtn.text(),'goals');
+			chartData($(this).text(),otBtn.text(),'goals');
 		}
 	});
 });
