@@ -40,7 +40,7 @@ class Player(models.Model):
     def get_absolute_url(self):
         return reverse('stats.views.player',args=[player_nickname])
 
-    def get_profile_pic(self):
+    def get_prof_pic(self):
         if profile_pic is not None:
             return profile_pic.url
         else:
