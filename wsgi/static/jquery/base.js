@@ -55,7 +55,7 @@ function chartData(season,week,out) {
 	success:function(dataFromServer) {drawChart(dataFromServer);}
 	}
 	);
-});
+}
 
 //creates and populates data table, instantiates chart, passes in data, and draws
 function drawChart(dataFromServer) {
