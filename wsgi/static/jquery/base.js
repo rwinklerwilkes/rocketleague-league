@@ -43,12 +43,14 @@ $(document).ready(function () {
 google.load('visualization','1.0',{'packages':['corechart']});
 google.setOnLoadCallback(drawChart);
 
-$(document).ready(function () {
+$(document).ready(chartData('All','All','goals'));
+
+function chartData(season,week,out) {
 	$.ajax(
 	{
 	type:'GET',
 	url:'/schedule/chart_data/',
-	data:{'season':201601,'week':'All','out':'goals'},
+	data:{'season':season,'week':week,'out':out},
 	success:function(dataFromServer) {drawChart(dataFromServer);}
 	}
 	);
@@ -87,4 +89,30 @@ function drawChart(dataFromServer) {
 
 	chart.draw(data,options);
 }
+
+
+$(function() {
+	$(".dropdown-menu").on('click','li a', function () {
+		var btn = $('.btn#' + $(this).parents('ul').attr('id'));
+		btn.html($(this).text() + ' <span class="caret"></span>');
+		//btn.val($(this).data('value'));
+		
+		var other = '';
+		//call function to redraw graph
+		if ($(this).parents('ul').attr('id')=='week-dropdown') {
+			other = 'season-dropdown';
+		}
+		else {
+			other = 'week-dropdown';
+		}
+		var otBtn = $('.btn#' + other);
+		
+		if (other == 'season-dropdown') {
+			chartData(otBtn.text(),$(this.text()),'goals');
+		}
+		else {
+			chartData($(this.text()),otBtn.text(),'goals');
+		}
+	});
+});
 
