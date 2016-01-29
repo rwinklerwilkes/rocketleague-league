@@ -41,8 +41,8 @@ class Player(models.Model):
         return reverse('stats.views.player',args=[player_nickname])
 
     def get_prof_pic(self):
-        if profile_pic is not None:
-            return profile_pic.url
+        if self.profile_pic is not None:
+            return self.profile_pic.url
         else:
             return '#'
 
