@@ -83,7 +83,7 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="thumbnail">
-			<img src=" {{ player.profile_pic.url | default_if_none: '#' }} " />
+			<img src=" {{ player.profile_pic.url|default_if_none:"#"}} " />
 			<div class="caption">
 				<span>
 				<form id="ProfilePicForm" method="post" action="{% url 'schedule:main' %}" enctype="multipart/form-data">
