@@ -41,7 +41,6 @@ $(document).ready(function () {
 
 
 google.load('visualization','1.0',{'packages':['corechart']});
-google.setOnLoadCallback(drawChart);
 
 $(document).ready(chartData('All','All','goals'));
 
