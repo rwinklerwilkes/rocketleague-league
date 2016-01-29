@@ -36,13 +36,18 @@ Released   : 20131117
 
 <div class = 'container'>
 	<div id="header-wrapper">
-		<div id="header" class="container">
+		<div id="header" class="container">
 			<div id="logo">
-				<span class="icon icon-soccer"></span>
-				<h1>{% block h1 %} {% endblock %}</h1>
-				<title>{% block title %}{% endblock %}</title>
+				<span>
+					<img class ='image-left' src =  "{% static 'img/logo.jpg' %}" width="125" height="125"></img>
+				</span>
+				<div class="row">
+					<div class="col-md-4 col-md-offset-2">
+					<h1>{% block h1 %} {% endblock %}</h1>
+					<title>{% block title %}{% endblock %}</title>
+					</div>
+				</div>
 			</div>
-			<div id="triangle-up"></div>
 		</div>
 	</div>
 	<div id="menu-wrapper">

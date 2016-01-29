@@ -86,10 +86,10 @@
 			<img class = 'image-left' src=" {{ player.get_prof_pic }} " />
 			<div class="caption">
 				<div class="row">
-					<form class="form-horizontal" id="ProfilePicForm" method="post" action="{% url 'schedule:main' %}" enctype="multipart/form-data">
+					<form class="form-inline" id="ProfilePicForm" method="post" action="{% url 'schedule:main' %}" enctype="multipart/form-data">
 					{% csrf_token %}
 					{{ pic_form.as_p }}
-					<input class="uploadButton" type="submit" name="picsubmit" value="Upload Image" />
+					<button id="uploadButton" class="btn btn-default" type="submit" name="picsubmit">Upload Image</button>
 					</form>
 				</div>
 				<div class="row">

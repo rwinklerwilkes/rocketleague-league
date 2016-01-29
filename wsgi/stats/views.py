@@ -25,6 +25,10 @@ def week(request,season_slug,week_number):
     games = week.game_set.all().order_by('series_number')
     return render(request,'stats/week.html',{'season':season,'week':week,'games':games})
 
+def table(request):
+    #need all
+    pass
+
 def game(request,season_slug,week_number,ht,at,series_number):
     season = get_object_or_404(Season,slug=season_slug)
     week = get_object_or_404(GameWeek,season=season,number=week_number)

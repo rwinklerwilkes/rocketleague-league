@@ -98,10 +98,9 @@ a:hover
 /* Form  Style                                                                   */
 /*********************************************************************************/
 
-.uploadButton {
-	width: 49%;
+#uploadButton {
 	float: left;
-	padding: 0em 0em;
+	width: 49%;
 }
 
 #ProfilePicForm {
@@ -409,7 +408,7 @@ ul.contact li a.icon-rss:before
 	#header-wrapper
 	{
 		overflow: hidden;
-		padding: 0em 0em 2em 0em;
+		padding: 0em 0em 0em 0em;
 		background: #bcd2ee;
 		
 	}
