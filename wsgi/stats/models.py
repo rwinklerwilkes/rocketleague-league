@@ -27,7 +27,7 @@ class Player(models.Model):
     player_team = models.ForeignKey(Team,default=0)
 
     class Meta:
-        ordering = ['-player_last_name']
+        ordering = ['-player_last_name','player_first_name']
 
     def update_stats(self):
         gs = GameStats.objects.filter(player=self)
