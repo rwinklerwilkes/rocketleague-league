@@ -85,13 +85,13 @@
 		<div class="thumbnail">
 			<img src=" {{ player.get_prof_pic }} " />
 			<div class="caption">
-				<span>
+				<div class="row"
 				<form id="ProfilePicForm" method="post" action="{% url 'schedule:main' %}" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{ pic_form.as_p }}
 				<input type="submit" name="picsubmit" value="Upload Image" />
 				</form>
-				</span>
+				</div>
 				<h4>{{player.player_nickname}}</h4>
 				<p> Lifetime Goals: {{ player.lifetime_goals }} </p>
 				<p> Lifetime Assists: {{ player.lifetime_assists }} </p>
