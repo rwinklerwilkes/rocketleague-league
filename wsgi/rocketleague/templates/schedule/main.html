@@ -83,18 +83,23 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="thumbnail">
-			<img src=" {{ player.get_prof_pic }} " />
+			<img class = 'image-left' src=" {{ player.get_prof_pic }} " />
 			<div class="caption">
-				<div class="row"
-				<form id="ProfilePicForm" method="post" action="{% url 'schedule:main' %}" enctype="multipart/form-data">
-				{% csrf_token %}
-				{{ pic_form.as_p }}
-				<input type="submit" name="picsubmit" value="Upload Image" />
-				</form>
+				<div class="row">
+					<form class="form-horizontal" id="ProfilePicForm" method="post" action="{% url 'schedule:main' %}" enctype="multipart/form-data">
+					{% csrf_token %}
+					{{ pic_form }}
+					<input class="uploadButton" type="submit" name="picsubmit" value="Upload Image" />
+					</form>
 				</div>
-				<h4>{{player.player_nickname}}</h4>
-				<p> Lifetime Goals: {{ player.lifetime_goals }} </p>
-				<p> Lifetime Assists: {{ player.lifetime_assists }} </p>
+				<div class="row">
+					<h4>{{player.player_nickname}}</h4>
+				</div>
+				<div class="row">
+					<div class="col-md-6">Lifetime Goals: {{ player.lifetime_goals }} </div>
+					<div class="col-md-6">Lifetime Assists: {{ player.lifetime_assists }} </div>
+				</div>
+				
 			</div>
 		</div>
 	</div>
