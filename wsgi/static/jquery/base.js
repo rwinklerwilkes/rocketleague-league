@@ -43,7 +43,7 @@ $(document).ready(function () {
 google.load('visualization','1.0',{'packages':['corechart']});
 
 $(document).ready(function () {
-	chartData('All','All','goals')
+	chartData('All','All','goals');
 });
 
 function chartData(season,week,out) {
