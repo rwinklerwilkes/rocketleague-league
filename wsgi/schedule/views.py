@@ -99,7 +99,7 @@ def chart_data(request):
         week = request.GET['week']
         out = request.GET['out']
 
-        if season != 'All:
+        if season != 'All':
             getstats = [g for g in gs if g.game.gameweek.season.slug == season]
 
         if week != 'All':
