@@ -15,6 +15,9 @@ class Player(models.Model):
     player_first_name = models.CharField(max_length=200)
     player_last_name = models.CharField(max_length=200)
     player_nickname = models.CharField(max_length=200,primary_key=True)
+
+    profile_pic = models.ImageField(upload_to='avatars/',null=True)
+    
     lifetime_goals = models.IntegerField(default=0)
     lifetime_assists = models.IntegerField(default=0)
     lifetime_saves = models.IntegerField(default=0)

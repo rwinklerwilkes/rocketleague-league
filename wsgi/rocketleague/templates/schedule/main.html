@@ -83,8 +83,15 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="thumbnail">
-			<img src="{% static 'img/av.jpg' %}" />
+			<img src=" {{player.profile_pic.url}} " />
 			<div class="caption">
+				<span>
+				<form id="ProfilePicForm" method="post" action="{% url 'schedule:main' %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ pic_form.as_p }}
+				<input type="submit" name="picsubmit" value="Upload Image" />
+				</form>
+				</span>
 				<h4>{{player.player_nickname}}</h4>
 				<p> Lifetime Goals: {{ player.lifetime_goals }} </p>
 				<p> Lifetime Assists: {{ player.lifetime_assists }} </p>

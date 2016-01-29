@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
-from schedule.forms import UserForm, PlayerForm
+from schedule.forms import UserForm, PlayerForm, ProfilePicForm
 from stats.models import Player, GameStats, Game, Season, GameWeek
 import json
 
@@ -67,11 +67,21 @@ def vw_login(request):
         return render(request,'schedule/login.html')
 
 @login_required
-def main(request):
+def main(request):  
     user = request.user
     #which player is the user?
     player = user.player
     player.update_stats()
+
+    if request.method == 'POST':
+        if 'picsubmit' in request.POST:
+            pic_form = ProfilePicForm(request.POST, request.FILES,instance=request.user.player)
+
+            if pic_form.is_valid():
+                p = pic_form.save()
+    else:
+        pic_form = ProfilePicForm(instance=request.user.player)
+    
     #what are their stats?
     gs = GameStats.objects.filter(player=player)
 
@@ -88,7 +98,7 @@ def main(request):
     sorted(weeks)
     sorted(seasons)
     
-    return render(request,'schedule/main.html',{'stats':gs,'player':player,'user':user,'weeks':weeks,'seasons':seasons})
+    return render(request,'schedule/main.html',{'stats':gs,'player':player,'user':user,'weeks':weeks,'seasons':seasons,'pic_form':pic_form})
 
 @login_required
 def chart_data(request):
