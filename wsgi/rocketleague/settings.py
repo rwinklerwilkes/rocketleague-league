@@ -133,7 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_ROOT = os.path.join(WSGI_DIR, 'static')
-MEDIA_ROOT = os.path.join(WSGI_DIR,'wsgi//media')
+MEDIA_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR', ''),'media')
 STATIC_URL ='/static/'
 MEDIA_URL = '/media/'
 
