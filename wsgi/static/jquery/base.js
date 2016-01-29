@@ -96,7 +96,7 @@ $(function() {
 	$(".dropdown-menu").on('click','li a', function () {
 		var btn = $('.btn#' + $(this).parents('ul').attr('id'));
 		btn.html($(this).text() + ' <span class="caret"></span>');
-		//btn.val($(this).data('value'));
+		btn.val($(this).text());
 		
 		var other = '';
 		//call function to redraw graph
@@ -108,14 +108,14 @@ $(function() {
 		}
 		var otBtn = $('.btn#' + other);
 		
-		console.log(otBtn.text());
-		console.log($(this).text());
+		console.log(otBtn.val());
+		console.log(btn.val());
 		
 		if (other == 'season-dropdown') {
-			chartData(otBtn.text(),$(this).text(),'goals');
+			chartData(otBtn.val(),btn.val(),'goals');
 		}
 		else {
-			chartData($(this).text(),otBtn.text(),'goals');
+			chartData(btn.val(),otBtn.val(),'goals');
 		}
 	});
 });
