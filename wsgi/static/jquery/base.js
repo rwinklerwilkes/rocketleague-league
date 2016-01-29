@@ -108,6 +108,9 @@ $(function() {
 		}
 		var otBtn = $('.btn#' + other);
 		
+		console.log(otBtn.text());
+		console.log($(this).text());
+		
 		if (other == 'season-dropdown') {
 			chartData(otBtn.text(),$(this).text(),'goals');
 		}
