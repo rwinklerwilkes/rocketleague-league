@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include,url
 from django.contrib import admin
+from django.conf.urls.static import static
 import schedule.views
 
 urlpatterns = [
@@ -23,4 +24,5 @@ urlpatterns = [
     url(r'^schedule/',include('schedule.urls',namespace='schedule')),
     url(r'^stats/',include('stats.urls',namespace='stats')),
     url(r'^admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+ 
