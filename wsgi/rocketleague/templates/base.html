@@ -60,6 +60,7 @@ Released   : 20131117
 					<li role="presentation"><a href="{% url 'stats:players' %}" accesskey="4" title="">Players</a></li>
 					{% if user.is_authenticated %}
 					<li role="presentation"><a href="{% url 'schedule:logout' %}" accesskey="5" title="">Logout</a></li>
+					<li role="presentation"><a href="{% url 'schedule:edit_profile' %}" accesskey="6" title="">Edit Profile</a></li>
 					{% else %}
 					<li role="presentation"><a href="{% url 'schedule:login' %}" accesskey="5" title="">Login</a></li>
 					{% endif %}

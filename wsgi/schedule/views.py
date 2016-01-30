@@ -89,6 +89,7 @@ def user_profile_change(request):
                     user.set_password(newpass)
                     user.save()
                 user.email = ucform.cleaned_data['email']
+                return HttpResponseRedirect('/schedule/main/')
     else:
         picform = ProfilePicForm(instance=request.user.player)
         pform = PlayerForm(instance=request.user.player)
