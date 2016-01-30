@@ -82,7 +82,7 @@ def user_profile_change(request):
 
             if user is not None:
                 if picform.is_valid():
-                    pic_form.save()
+                    picform.save()
                 if pform.is_valid():
                     pform.save()
                 if newpass is not None:
