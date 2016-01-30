@@ -10,6 +10,21 @@ class UserForm(forms.ModelForm):
         model=User
         fields=('username','email','password')
 
+class UserChangeForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    new_pass1 = forms.CharField(widget=forms.PasswordInput())
+    new_pass2 = forms.CharField(widget=forms.PasswordInput())
+
+    def clean(self):
+        if 'new_pass1' in self.cleaned_data and 'new_pass2' in self.cleaned_data:
+            if self.cleaned_data['new_pass1'] != self.cleaned_data['new_pass2']:
+                raise forms.ValidationError(_("The two password fields did not match."))
+        return self.cleaned_data
+
+    class Meta:
+        model=User
+        fields=('email','password','new_pass1','new_pass2')
+
 class PlayerForm(forms.ModelForm):
     class Meta:
         model=Player

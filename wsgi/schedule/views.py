@@ -46,7 +46,6 @@ def register(request):
         player_form = PlayerForm()
 
     return render(request,'schedule/register.html',{'user_form':user_form,'player_form':player_form,'registered':registered})
-    
 
 def vw_login(request):
     if request.user.is_authenticated():
@@ -65,6 +64,39 @@ def vw_login(request):
     else:
         #invalid, redirect to login site
         return render(request,'schedule/login.html')
+
+#this function will handle 3 forms
+#merge into main so user can change stuff from main page
+#profile pic form, user change form, and player form
+@login_required
+def user_profile_change(request):
+    if request.method == 'POST':
+        ucform = UserChangeForm(data=request.POST,instance=request.user)
+        pform = PlayerForm(data=request.POST,instance=request.user.player)
+        if 'picsubmit' in request.POST:
+            picform = ProfilePicForm(request.POST,request.FILES,instance=request.user.player)
+            if picform.is_valid():
+                pic_form.save()
+        else:
+            picform = ProfilePicForm(instance=request.user.player)
+
+        if ucform.is_valid():
+            oldpass = ucform.cleaned_data['password']
+            newpass = ucform.cleaned_data['new_pass1']
+            user = authenticate(username=request.user.username,password=oldpass)
+            if user is not None:
+                user.set_password(newpass)
+                user.save()
+                user.email = ucform.cleaned_data['email']
+            
+        if pform.is_valid():
+            pform.save()
+    else:
+        pform = PlayerForm(instance=request.user.player)
+        ucform = UserChangeForm(instance=request.user)
+
+    return render(request,'schedule/user_profile_change.html',{'user_form':ucform,'player_form':pform,'pic_form':picform})
+        
 
 @login_required
 def main(request):  
