@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="editprofile">
+		<form id="form-horizontal" method="post" action="{% url 'schedule:edit_profile' %}" enctype="multipart/form-data">
+			{% csrf_token %}
+			<!-- Display each form, wrap the form as p so each gets a new line -->
+			{{ user_form.as_p  }}
+			{{ player_form.as_p }}
+			{{ pic_form.as_p }}
+
+			<input type="submit" name="submit" value="Submit" />
+		
+		</form>
+    </div>
+{% endblock %}

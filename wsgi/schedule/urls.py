@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^logout/$',views.vw_logout,name='logout'),
     url(r'^login/$',views.vw_login,name='login'),
     url(r'^main/$',views.main,name='main'),
-    url(r'^chart_data/$',views.chart_data,name='chart_data')
+    url(r'^chart_data/$',views.chart_data,name='chart_data'),
+    url(r'^edit_profile/$',views.user_profile_change,name='edit_profile')
 ]

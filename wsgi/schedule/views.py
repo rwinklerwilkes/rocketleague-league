@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
-from schedule.forms import UserForm, PlayerForm, ProfilePicForm
+from schedule.forms import UserForm, PlayerForm, ProfilePicForm, UserChangeForm
 from stats.models import Player, GameStats, Game, Season, GameWeek
 import json
 
@@ -73,29 +73,28 @@ def user_profile_change(request):
     if request.method == 'POST':
         ucform = UserChangeForm(data=request.POST,instance=request.user)
         pform = PlayerForm(data=request.POST,instance=request.user.player)
-        if 'picsubmit' in request.POST:
-            picform = ProfilePicForm(request.POST,request.FILES,instance=request.user.player)
-            if picform.is_valid():
-                pic_form.save()
-        else:
-            picform = ProfilePicForm(instance=request.user.player)
+        picform = ProfilePicForm(request.POST,request.FILES,instance=request.user.player)
 
         if ucform.is_valid():
             oldpass = ucform.cleaned_data['password']
             newpass = ucform.cleaned_data['new_pass1']
             user = authenticate(username=request.user.username,password=oldpass)
+
             if user is not None:
-                user.set_password(newpass)
-                user.save()
+                if picform.is_valid():
+                    pic_form.save()
+                if pform.is_valid():
+                    pform.save()
+                if newpass is not None:
+                    user.set_password(newpass)
+                    user.save()
                 user.email = ucform.cleaned_data['email']
-            
-        if pform.is_valid():
-            pform.save()
     else:
+        picform = ProfilePicForm(instance=request.user.player)
         pform = PlayerForm(instance=request.user.player)
         ucform = UserChangeForm(instance=request.user)
 
-    return render(request,'schedule/user_profile_change.html',{'user_form':ucform,'player_form':pform,'pic_form':picform})
+    return render(request,'schedule/edit_profile.html',{'user_form':ucform,'player_form':pform,'pic_form':picform})
         
 
 @login_required
