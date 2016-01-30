@@ -60,7 +60,7 @@ def import_file(path):
             #only split the value twice - this allows for team names to have spaces
             team_in = row[4].split(maxsplit=2)
             team_key = team_in[1]
-            team_name = team_in[0]+' ' + team_in[2]
+            team_name = team_in[0]+ ' ' + team_in[2]
 
             team_line, cr = Team.objects.get_or_create(key=team_key,defaults={'name':team_name})
 
@@ -71,12 +71,10 @@ def import_file(path):
 
             if k['ht'] == team_key:
                 ht = team_line
-                at = k['at']
-                ot = at
+                ot = k['at']
             else:
-                ht = k['at']
                 at = team_line
-                ot = ht
+                ot = k['ht']
 
             #create the other team using the row key
             team_two, ttcr = Team.objects.get_or_create(key=ot)
@@ -87,6 +85,9 @@ def import_file(path):
             else:
                 ht = team_two
                 at = team_line
+
+            print(ht,end='')
+            print(at)
 
             #then, make sure that the players exist
             #while we're at it, if the player was created, create a user to go along with it
@@ -104,12 +105,11 @@ def import_file(path):
 
             #then, create the games
             game, gamecreated = Game.objects.get_or_create(gameweek=week,series_number=int(row[3]),home_team=ht,away_team=at)
-            if gamecreated:
-                if k['ht'] == team_key:
-                    game.home_team_score = int(row[5])
-                else:
-                    game.away_team_score = int(row[5])
-                game.save()
+            if k['ht'] == team_key:
+                game.home_team_score = int(row[5])
+            else:
+                game.away_team_score = int(row[5])
+            game.save()
 
             #lastly, add the stats
             gs, gscreated = GameStats.objects.get_or_create(game=game,player=player)
