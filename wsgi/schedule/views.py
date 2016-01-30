@@ -112,7 +112,10 @@ def chart_data(request):
             week = int(request.GET['week'])
         except:
             week = 'All'
-        out = request.GET['out']
+        #out should be of the form [goals,assists,saves,shots,points]
+        #will be a 1 if wanted, 0 if not
+        out = [int(i) for i in request.GET['out'].split(',')]
+        out_list = ['goals','assists','saves','shots','points']
 
         if season != 'All':
             getstats = [g for g in gs if g.game.gameweek.season.slug == season]
@@ -122,12 +125,20 @@ def chart_data(request):
 
         #use getattr to get the stat that we care about
         returnstats = []
-        returnstats.append(['Week',out])
+        legend = ['Week'] + [out_list[i] for i in range(len(out)) if out[i]==1]
+        returnstats.append(legend)
         for gsrow in getstats:
             cur_it = []
-            cur_it.append(str(gsrow.game.gameweek.number) + str(gsrow.game.series_number))
-            cur_it.append(getattr(gsrow,out))
+            cur_it.append('Week ' + str(gsrow.game.gameweek.number) + ' Game ' + str(gsrow.game.series_number))
+
+            for i in range(len(out)):
+                if out[i]==1:
+                    cur_it.append(getattr(gsrow,out_list[i]))
             returnstats.append(cur_it)
+
+        rs_test = len(returnstats[0])
+        for i in returnstats:
+            assert len(i)==rs_test
 
         rdict = {'stats':returnstats}
 

@@ -82,7 +82,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-4">
 		<div class="thumbnail">
 			<img class = 'image-left' src=" {{ player.get_prof_pic }} " />
 			<div class="caption">
@@ -104,7 +104,26 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-1">
+		<div id="chart_Btns" class="btn-group-vertical" role="group">
+			<label class="btn btn-default">
+				<input type="checkbox" name="stat" id="goals" value="goals" checked="checked">Goals
+			</label>
+			<label class="btn btn-default">
+				<input type="checkbox" name="stat" id="assists" value="assists">Assists
+			</label>
+			<label class="btn btn-default">
+				<input type="checkbox" name="stat" id="assists" value="assists">Saves
+			</label>
+			<label class="btn btn-default">
+				<input type="checkbox" name="stat" id="assists" value="assists">Shots
+			</label>
+			<label class="btn btn-default">
+				<input type="checkbox" name="stat" id="assists" value="assists">Points
+			</label>
+		</div>
+	</div>
+	<div class="col-md-7">
 		<div id="chart_div"></div>
 	</div>
 </div>

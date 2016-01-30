@@ -21,17 +21,17 @@
 google.load('visualization','1.0',{'packages':['corechart']});
 
 $(document).ready(function () {
-	chartData('All','All','goals');
+	chartData('All','All','1,0,0,0,0');
 });
 
 function chartData(season,week,out) {
 	$.ajax(
-	{
-	type:'GET',
-	url:'/schedule/chart_data/',
-	data:{'season':season,'week':week,'out':out},
-	success:function(dataFromServer) {drawChart(dataFromServer);}
-	}
+		{
+		type:'GET',
+		url:'/schedule/chart_data/',
+		data:{'season':season,'week':week,'out':out},
+		success:function(dataFromServer) {drawChart(dataFromServer);}
+		}
 	);
 }
 
@@ -40,33 +40,46 @@ function drawChart(dataFromServer) {
 	var data = new google.visualization.DataTable();
 	
 	var stats = dataFromServer['stats'];
-	console.log(stats);
+	
+	var possible_cols = ['Week','Goals','Assists','Saves','Shots','Points']
 
 	var col1 = stats[0][0];
-	console.log(col1)
-	var col2 = stats[0][1];
-	console.log(col2)
+	var numSeries = 0
+	//Column 0 will always have 'Week', so we can skip this in the loop
 	data.addColumn('string',col1);
-	data.addColumn('number',col2);
+	var seriesPrep = {};
+	var axesPrep = {0:{title:'Number'},1:{title:'Points'}};
 	
+	for(i=1;i<stats[0].length;i++)
+	{
+		data.addColumn('number',stats[0][i]);
+		if (i < 5) {
+			var j = i + 0;
+			seriesPrep[j] = {targetAxisIndex:0};
+		}
+		else {
+			seriesPrep[j] = {targetAxisIndex:1};
+		}
+		numSeries++;
+	}	
+
 	for (i=1;i<stats.length;i++) {
 		data.addRow(stats[i]);
 	}
 
-	var options = {
-	width: $(window).width()/3,
-	height: 400,
-	hAxis: {
-		title: 'Game'
-	},
-	vAxis: {
-		title: 'Points Scored'
-	}
+	var materialOptions = {
+		title: 'Performance by Season and Week',
+		chartArea: {left:0, top:20},
+		curveType: 'function',
+		width: $(document).width()/3,
+		height: 400
 	};
-
+	materialOptions.series = seriesPrep;
+	materialOptions.vAxes = axesPrep;
+	
 	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
-	chart.draw(data,options);
+	chart.draw(data,materialOptions);
 }
 
 
@@ -86,14 +99,11 @@ $(function() {
 		}
 		var otBtn = $('.btn#' + other);
 		
-		console.log(otBtn.val());
-		console.log(btn.val());
-		
 		if (other == 'season-dropdown') {
-			chartData(otBtn.val(),btn.val(),'goals');
+			chartData(otBtn.val(),btn.val(),'1,0,0,0,0');
 		}
 		else {
-			chartData(btn.val(),otBtn.val(),'goals');
+			chartData(btn.val(),otBtn.val(),'1,0,0,0,0');
 		}
 	});
 });
