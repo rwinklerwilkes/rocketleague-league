@@ -11,9 +11,9 @@ class UserForm(forms.ModelForm):
         fields=('username','email','password')
 
 class UserChangeForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(),label='Current Password (Required)')
-    new_pass1 = forms.CharField(widget=forms.PasswordInput(),label='New Password',blank=True)
-    new_pass2 = forms.CharField(widget=forms.PasswordInput(),label='Confirm New Password',blank=True)
+    password = forms.CharField(widget=forms.PasswordInput(),label='Current Password (Required)',required=True)
+    new_pass1 = forms.CharField(widget=forms.PasswordInput(),label='New Password',required=False)
+    new_pass2 = forms.CharField(widget=forms.PasswordInput(),label='Confirm New Password',required=False)
 
     def clean(self):
         if 'new_pass1' in self.cleaned_data and 'new_pass2' in self.cleaned_data:
