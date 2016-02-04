@@ -13,41 +13,57 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <!-- Javascript to create chart for google -->
 <script type = "text/javascript" src = "{% static 'jquery/base.js' %}"></script>
+
+<!-- Calendar -->
+<link rel='stylesheet' href= "{% static 'fullcalendar/fullcalendar.css' %}" />
+<script type="text/javascript" src = "{% static 'fullcalendar/lib/moment.min.js' %}"></script>
+<script type="text/javascript" src = "{% static 'fullcalendar/fullcalendar.js' %}"></script>
+<script type="text/javascript" src = "{% static 'fullcalendar/gcal.js' %}"></script>
+<script type="text/javascript" src = "{% static 'jquery/calendar.js' %}"></script>
+
 {% endblock %}
 
 {% block h1 %} Season {{season.name}} {% endblock %}
 
 {% block content %}
 
-<h1> Season Results </h1>
-<table class="table table-bordered">
-<tr>
-	<th>Season {{season.name}}</th>
-	<th colspan="2">Matches</th>
-	<th colspan="2">Games</th>
-	<th colspan="2">Goals</th>
-</tr>
-<tr>
-	<th>Team</th>
-	<th>Won</th>
-	<th>Lost</th>
-	<th>Won</th>
-	<th>Lost</th>
-	<th>For</th>
-	<th>Against</th>
-</tr>
+<div id="row">
+	<div class="col-md-8 col-md-offset-2">
+		<h1> Season Results </h1>
+		<table class="table table-bordered">
+		<tr>
+			<th>Season {{season.name}}</th>
+			<th colspan="2">Matches</th>
+			<th colspan="2">Games</th>
+			<th colspan="2">Goals</th>
+		</tr>
+		<tr>
+			<th>Team</th>
+			<th>Won</th>
+			<th>Lost</th>
+			<th>Won</th>
+			<th>Lost</th>
+			<th>For</th>
+			<th>Against</th>
+		</tr>
 
-{% for row in table %}
-<tr>
-	<td>{{row.0}}</td>
-	<td>{{row.1}}</td>
-	<td>{{row.2}}</td>
-	<td>{{row.3}}</td>
-	<td>{{row.4}}</td>
-	<td>{{row.5}}</td>
-	<td>{{row.6}}</td>
-</tr>
-{% endfor %}
-
-</table>
+		{% for row in table %}
+		<tr>
+			<td>{{row.0}}</td>
+			<td>{{row.1}}</td>
+			<td>{{row.2}}</td>
+			<td>{{row.3}}</td>
+			<td>{{row.4}}</td>
+			<td>{{row.5}}</td>
+			<td>{{row.6}}</td>
+		</tr>
+		{% endfor %}
+		</table>
+	</div>
+</div>
+<div id="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div id="calendar"></div>
+	</div>
+</div>
 {% endblock %}
