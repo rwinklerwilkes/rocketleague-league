@@ -533,6 +533,19 @@ ul.contact li a.icon-rss:before
 }
 
 /*********************************************************************************/
+/* Table                                                                         */
+/*********************************************************************************/
+
+#fixture-table {
+	margin-top: 20px;
+}
+
+#fixture-table th {
+	text-align: center;
+}
+
+
+/*********************************************************************************/
 /* Banner                                                                        */
 /*********************************************************************************/
 	
@@ -798,28 +811,6 @@ ul.contact li a.icon-rss:before
 	text-align: center;
 	color: #FFF;
 }
-
-.column1,  .column2,  .column3,  .column4
-{
-	width: 282px;
-}
-
-.column1,  .column2
-{
-	float: left;
-	margin-right: 24px;
-}
-
-.column3
-{
-	float: left;
-}
-
-.column4
-{
-	float: right;
-}
-
 
 	#header-featured
 	{

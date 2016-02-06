@@ -83,9 +83,50 @@ def week(request,season_slug,week_number):
     games = week.game_set.all().order_by('series_number')
     return render(request,'stats/week.html',{'season':season,'week':week,'games':games})
 
-def table(request):
-    #need all
-    pass
+def teams(request):
+    #hard code current season
+    season = get_object_or_404(Season,slug='201601')
+    teams_in_season = {}
+
+    weeks = GameWeek.objects.filter(season=season)
+    games = []
+    week_set = []
+    for w in weeks:
+        games += [g for g in Game.objects.filter(gameweek=w)]
+
+    for g in games:
+        cur_week_key = str(g.gameweek.number)+str(g.series_number)
+        #g is a single game
+        if g.home_team not in teams_in_season.keys():
+            teams_in_season[g.home_team.key] = {'name':g.home_team.name,cur_week_key:g.home_team_score}
+        else:
+            teams_in_season[g.home_team.key][cur_week_key]=g.home_team_score
+        if g.away_team not in teams_in_season.keys():
+            teams_in_season[g.away_team.key] = {'name':g.away_team.name,cur_week_key:g.away_team_score}
+        else:
+            teams_in_season[g.away_team.key][cur_week_key]=g.away_team_score
+        if cur_week_key not in week_set:
+            week_set.append(cur_week_key)
+
+    sorted(week_set)
+
+    #teams_in_season now has all of the teams and their weekly scores
+    #have to get player set
+    p = Player.objects.all()
+    for player in p:
+        try:
+            cur_t = player.player_team.key
+            if cur_t in teams_in_season.keys():
+                try:
+                    teams_in_season[cur_t]['players'].append(player)
+                except:
+                    teams_in_season[cur_t]['players']=[player]
+        except:
+            pass
+    keys = teams_in_season.keys()
+
+    return render(request,'stats/teams.html',{'teams':teams_in_season,'weeks':week_set,'keys':keys})
+            
 
 def game(request,season_slug,week_number,ht,at,series_number):
     season = get_object_or_404(Season,slug=season_slug)
