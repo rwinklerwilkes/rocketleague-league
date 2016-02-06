@@ -46,6 +46,20 @@ class Player(models.Model):
         else:
             return '#'
 
+    def get_prof_stats(self):
+        pts = [('goals',self.lifetime_goals,self.lifetime_goals*100),('assists',self.lifetime_assists,self.lifetime_assists*50),('saves',self.lifetime_saves,self.lifetime_saves*50),('shots',self.lifetime_shots,self.lifetime_shots*20)]
+        pts = sorted(pts,key=lambda x:x[2],reverse=True)
+        print(pts)
+        return pts[:2]
+
+    def _shot_pct(self):
+        try:
+            out = round(self.lifetime_goals/self.lifetime_shots,3)
+        except:
+            out = 0
+        return out
+    shot_pct = property(_shot_pct)
+
     def __str__(self):
         return self.player_nickname
 

@@ -97,10 +97,12 @@
 					<h4>{{player.player_nickname}}</h4>
 				</div>
 				<div class="row">
-					<div class="col-md-6">Lifetime Goals: {{ player.lifetime_goals }} </div>
-					<div class="col-md-6">Lifetime Assists: {{ player.lifetime_assists }} </div>
+					<div class="col-md-6">Lifetime {{ player.get_prof_stats.0.0 }}: {{ player.get_prof_stats.0.1 }} </div>
+					<div class="col-md-6">Lifetime {{ player.get_prof_stats.1.0 }}: {{ player.get_prof_stats.1.1 }} </div>
 				</div>
-				
+				<div class="row">
+					<div class="col-md-12">Lifetime Shooting Percent: {{player.shot_pct}}</div>
+				</div>
 			</div>
 		</div>
 	</div>

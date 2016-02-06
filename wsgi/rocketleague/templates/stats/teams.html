@@ -34,21 +34,25 @@
 						</a>
 					</h4>
 				</div>
-				<div id="collapse{{ k }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby ="heading{{ k }}">
+				<div id="collapse{{ k }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby ="heading{{ k }}">
 					<div class="panel-body">
 					{% for p in v.players %}
 						<div id="row">
-							<div class="col-sm-1">
+							<div class="col-sm-3">
+								<span>
 								<img class="image-left" src="{{ p.get_prof_pic }}" alt="{{p.player_nickname}}" height="30" width="30"/>
-							</div>
-							<div class="col-sm-2">
 								{{ p.player_nickname }}
+								</span>
 							</div>
 							<div class="col-sm-9">
 							{{p.player_first_name}} {{p.player_last_name}}
 							</div>
 						</div>
 					{% endfor %}
+					
+					
+					<!-- chart -->
+					
 					</div>
 				</div>
 			</div>
