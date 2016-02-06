@@ -19,6 +19,7 @@
 
 
 //Makes the nav bar sticky whenever it reaches the top
+
 $(document).ready(function () {
 
 	var menu = $('#menu-wrapper');
@@ -27,10 +28,12 @@ $(document).ready(function () {
 	function scroll() {
 		if ($(window).scrollTop() >= origOffsetY) {
 			$('#menu-wrapper').addClass('navbar-fixed-top');
-			$('.wrapper').addClass('menu-padding');
+			//$('.wrapper').addClass('menu-padding');
+			$('.wrapper').css('padding-top','75px');
 		} else {
 			$('#menu-wrapper').removeClass('navbar-fixed-top');
-			$('.wrapper').removeClass('menu-padding');
+			//$('.wrapper').removeClass('menu-padding');
+			$('.wrapper').css('padding-top','0px');
 		}
 
 	}

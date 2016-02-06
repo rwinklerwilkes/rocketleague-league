@@ -11,8 +11,6 @@
 
 <!-- load AJAX API -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<!-- Javascript to create chart for google -->
-<script type = "text/javascript" src = "{% static 'jquery/base.js' %}"></script>
 
 <!-- Calendar -->
 <link rel='stylesheet' href= "{% static 'fullcalendar/fullcalendar.css' %}" />
@@ -20,6 +18,7 @@
 <script type="text/javascript" src = "{% static 'fullcalendar/fullcalendar.js' %}"></script>
 <script type="text/javascript" src = "{% static 'fullcalendar/gcal.js' %}"></script>
 <script type="text/javascript" src = "{% static 'jquery/calendar.js' %}"></script>
+<script type="text/javascript" src = "{% static 'jquery/base.js' %}"></script>
 
 {% endblock %}
 
@@ -63,7 +62,9 @@
 </div>
 <div id="row">
 	<div class="col-md-8 col-md-offset-2">
-		<div id="calendar"></div>
+		<div id="calendar-wrapper">
+			<div id="calendar"></div>
+		</div>
 	</div>
 </div>
 {% endblock %}

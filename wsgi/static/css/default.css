@@ -462,6 +462,14 @@ ul.contact li a.icon-rss:before
 		color: rgba(255,255,255,1);
 	}
 	
+/*********************************************************************************/
+/* Calendar                                                                      */
+/*********************************************************************************/
+
+	#calendar-wrapper {
+		padding: 20px 20px;
+		margin: 20px 20px;
+	}
 	
 
 /*********************************************************************************/
@@ -470,12 +478,19 @@ ul.contact li a.icon-rss:before
 
 	#menu-wrapper
 	{
+		height:	75px;
 		background: #3D3D3D;
 	}
 
 	#menu
 	{
+		background: #3D3D3D;
 		margin: 0px auto;
+	}
+	
+	#menu.affix {
+		position: fixed;
+		top: 0px;
 	}
 	
 	#menu ul
