@@ -1,5 +1,6 @@
 /* Filename: base.js */
 
+/*
   $(document).ready(function () { 
     var newHeight = $(window).height() - $('#header-wrapper').height() - $('#menu-wrapper').height() - $('#copyright').height();
     var oldHeight = $('#featured-wrapper').height();
@@ -8,7 +9,7 @@
       $('#featured-wrapper').height(newHeight);
     }
   });
-
+*/
 
 //Makes the nav bar sticky whenever it reaches the top
 
