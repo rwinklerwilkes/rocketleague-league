@@ -529,6 +529,7 @@ ul.contact li a.icon-rss:before
 #menu ul.nav a:hover { 
 	background-color: #bcd2ee; 
 	color: #3D3D3D;
+	height: 75px;
 }
 
 /*********************************************************************************/
