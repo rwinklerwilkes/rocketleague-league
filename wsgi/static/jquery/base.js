@@ -1,12 +1,4 @@
 /* Filename: base.js */
-//$(document).ready(function() {
-//	$('ul.nav a').hover(function() {
-//		$('#triangle-up').css('border-bottom','30px solid #bcd2ee');
-//	}, function() {
-//	//on mouseout, reset the color
-//	$('#triangle-up').css('border-bottom','30px solid #3D3D3D');
-//	});
-//});
 
   $(document).ready(function () { 
     var newHeight = $(window).height() - $('#header-wrapper').height() - $('#menu-wrapper').height() - $('#copyright').height();
@@ -40,4 +32,12 @@ $(document).ready(function () {
 
 	document.onscroll = scroll;
 
+});
+
+$(document).ready(function(){
+    $('li.dropdown').hover(function() {
+      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
+    }, function() {
+      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
+    });  
 });

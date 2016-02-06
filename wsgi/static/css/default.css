@@ -517,20 +517,22 @@ ul.contact li a.icon-rss:before
 		color: #fff;
 	}
 	
-	#menu li:hover a, #menu li.active a, #menu li.active span
-	{
-	}
-	
-	#menu .current_page_item a
-	{
-		color: #fff;
-	}
 
-#menu ul.nav a:hover { 
+#menu .dropdown-menu {
+	background-color: #3D3D3D;
+	text-align: center;
+}
+
+#menu .dropdown-menu a:hover {
+	background-color: #3D3D3D;
+}
+	
+#menu ul.nav a.menubar:hover { 
 	background-color: #bcd2ee; 
 	color: #3D3D3D;
 	height: 75px;
 }
+
 
 /*********************************************************************************/
 /* Table                                                                         */

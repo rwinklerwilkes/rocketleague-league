@@ -53,15 +53,22 @@ Released   : 20131117
 	<div id="menu-wrapper">
 		<div id="menu">
 			<ul class = "nav pav-pills">
-				<li role="presentation" class="active"><a href="/"  accesskey="1" title="">Homepage</a></li>
-				<li role="presentation"><a href="{% url 'stats' %}" accesskey="2" title="">Stats</a></li>
-				<li role="presentation"><a href="{% url 'stats:season' season_slug=201601 %}" accesskey="3" title="">Current Season</a></li>
-				<li role="presentation"><a href="{% url 'stats:players' %}" accesskey="4" title="">Players</a></li>
+				<li role="presentation" class="active"><a href="/"  accesskey="1" title="" class="menubar">Homepage</a></li>
+				<!--<li role="presentation"><a href="{% url 'stats' %}" accesskey="2" title="">Stats</a></li>-->
+				<li role="presentation" class="dropdown">
+					<a href="#" data-toggle="dropdown" class="menubar">Statistics</a>
+					<ul class="dropdown-menu">
+						<li><a href="{% url 'stats' %}" title="">Stats</a></li>
+						<li><a href="{% url 'stats:teams' %}" title="">Team Overview</a></li>
+					</ul>
+				</li>
+				<li role="presentation"><a href="{% url 'stats:season' season_slug=201601 %}" accesskey="3" title="" class="menubar">Current Season</a></li>
+				<li role="presentation"><a href="{% url 'stats:players' %}" accesskey="4" title="" class="menubar">Players</a></li>
 				{% if user.is_authenticated %}
-				<li role="presentation"><a href="{% url 'schedule:edit_profile' %}" accesskey="5" title="">Edit Profile</a></li>
-				<li role="presentation"><a href="{% url 'schedule:logout' %}" accesskey="6" title="">Logout</a></li>
+				<li role="presentation"><a href="{% url 'schedule:edit_profile' %}" accesskey="5" title="" class="menubar">Edit Profile</a></li>
+				<li role="presentation"><a href="{% url 'schedule:logout' %}" accesskey="6" title="" class="menubar">Logout</a></li>
 				{% else %}
-				<li role="presentation"><a href="{% url 'schedule:login' %}" accesskey="5" title="">Login</a></li>
+				<li role="presentation"><a href="{% url 'schedule:login' %}" accesskey="5" title="" class="menubar">Login</a></li>
 				{% endif %}
 			</ul>
 		</div>
