@@ -38,13 +38,13 @@
 					<div class="panel-body">
 					{% for p in v.players %}
 						<div class="row">
-							<div class="col-sm-3">
+							<div class="col-sm-4">
 								<span>
-								<img class="image-left" src="{{ p.get_prof_pic }}" alt="{{p.player_nickname}}" height="30" width="30"/>
+								<img class="image" src="{{ p.get_prof_pic }}" alt="{{p.player_nickname}}" height="30" width="30"/>
 								{{ p.player_nickname }}
 								</span>
 							</div>
-							<div class="col-sm-9">
+							<div class="col-sm-8">
 							{{p.player_first_name}} {{p.player_last_name}}
 							</div>
 						</div>
