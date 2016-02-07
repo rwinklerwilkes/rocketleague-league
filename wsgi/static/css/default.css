@@ -49,12 +49,10 @@ a
 	color: #2C383B;
 }
 
-/*
 a:hover
 {
 	text-decoration: none;
 }
-*/
 
 /*********************************************************************************/
 /* Image Style                                                                   */
@@ -341,7 +339,7 @@ a:hover
 	padding-bottom: 20px;
 }
 
-#dd .dropdown-menu, a:hover, a:active, a:visited {
+#dd .dropdown-menu a:hover, #dd .dropdown-menu a:active, #dd .dropdown-menu a:visited {
 	background: #BCD2EE;
 	color: #FFF;
 	-webkit-transform: translateX(3px);
