@@ -22,6 +22,7 @@ $(document).ready(function () {
 		if ($(window).scrollTop() >= origOffsetY) {
 			$('#menu-wrapper').addClass('navbar-fixed-top');
 			//$('.wrapper').addClass('menu-padding');
+			//75 px is height of menu
 			$('.wrapper').css('padding-top','75px');
 		} else {
 			$('#menu-wrapper').removeClass('navbar-fixed-top');
@@ -37,8 +38,15 @@ $(document).ready(function () {
 
 $(document).ready(function(){
     $('li.dropdown').hover(function() {
-      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
+		$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
+		$(this).css({
+			"background": "#bcd2ee",
+			"height": "75px"
+		});
     }, function() {
-      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
+		$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
+		$(this).css({
+			"background": "#3D3D3D"
+		});
     });  
 });

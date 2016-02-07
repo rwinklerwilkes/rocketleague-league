@@ -55,9 +55,9 @@ Released   : 20131117
 			<ul class = "nav pav-pills">
 				<li role="presentation" class="active"><a href="/"  accesskey="1" title="" class="menubar">Homepage</a></li>
 				<!--<li role="presentation"><a href="{% url 'stats' %}" accesskey="2" title="">Stats</a></li>-->
-				<li role="presentation" class="dropdown">
-					<a href="#" data-toggle="dropdown" class="menubar">Statistics</a>
-					<ul class="dropdown-menu">
+				<li role="presentation" id='dd' class="dropdown">
+					<a href="" id='dd' data-toggle="dropdown" class="menubar">Statistics</a>
+					<ul id='dd' class="dropdown-menu">
 						<li><a href="{% url 'stats' %}" title="">Stats</a></li>
 						<li><a href="{% url 'stats:teams' %}" title="">Team Overview</a></li>
 					</ul>
