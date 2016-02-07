@@ -126,6 +126,51 @@ def teams(request):
     keys = teams_in_season.keys()
 
     return render(request,'stats/teams.html',{'teams':teams_in_season,'weeks':week_set,'keys':keys})
+
+def team_data(request):
+    if request.method == 'GET':
+        season_slug = request.GET['season']
+        team_key = request.GET['team']
+        t = get_object_or_404(Team,key=team_key)
+        s = Season.objects.get(slug=season_slug)
+        #get all objects for players on t in season s
+        gs = GameStats.objects.filter(player__team=t,game__gameweek__season=s)
+        
+        #copied from other chart data view
+        #out will be of the form 1,1,1,0,1
+        out = [int(i) for i in request.GET['out'].split(',')]
+        return_stats = {}
+        out_list = ['goals','assists','saves','shots','points']
+        legend =['Week'] + [out_list[i] for i in range(len(out)) if out[i]==1]
+        for g in gs:
+            key = 'Week ' + str(gsrow.game.gameweek.number) + ' Game ' + str(gsrow.game.series_number)
+            if key in return_stats.keys():
+                #in there already, so add to the totals
+                for i in range(len(out)):
+                    counter = 0
+                    if out[i]==1:
+                        return_stats[key][counter]+=getattr(g,out_list[i])
+                        counter+=1
+            else:
+                return_stats[key] = []
+                for i in range(len(out)):
+                    if out[i]==1:
+                        return_stats[key].append(getattr(g,out_list[i]))
+        #so, return_stats should now look like {'Week 1 Game 1':[3,2,0,8,1500],...}
+        #going to put it in a similar form to the other output from the other chart view (in schedule)
+        return_stats_list = [legend]
+        for k,v in return_stats.items():
+            cur_list = v
+            cur_list.insert(0,k)
+            return_stats_list.append(cur_list)
+
+        rdict = {'stats':return_stats_list}
+
+    else:
+        rdict = {'stats':[]}
+    return JsonResponse(rdict)
+        
+            
             
 
 def game(request,season_slug,week_number,ht,at,series_number):
