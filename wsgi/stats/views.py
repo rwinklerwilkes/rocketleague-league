@@ -23,7 +23,7 @@ def season(request,season_slug):
     #wins, losses, games for, games against, goals for, goals against
     for w in weeks:
         games = w.game_set.all()
-        print(games)
+        #print(games)
         week_res = {}
         
         for g in games:
@@ -65,16 +65,16 @@ def season(request,season_slug):
                 else:
                     ret[g.home_team.key]['losses']+=1
                     ret[g.away_team.key]['wins']+=1
-            print(week_res)
+            #print(week_res)
 
 
     output = []
     for k in ret.keys():
         outlist = [ret[k]['name'],ret[k]['wins'],ret[k]['losses'],ret[k]['for'],ret[k]['against'],ret[k]['goals_for'],ret[k]['goals_against']]
         output.append(outlist)
-    print(output)
+    #print(output)
     output = sorted(output,key=lambda l:l[1],reverse=True)
-    print(output)
+    #print(output)
     return render(request,'stats/season.html',{'season':season,'weeks':weeks,'games':games,'table':output})
 
 def week(request,season_slug,week_number):
