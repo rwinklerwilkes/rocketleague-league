@@ -21,7 +21,7 @@
 
 {% block content %}
 
-<div id="row">
+<div class="row">
 	<div class="col-md-6 col-md-offset-3">
 	
 		{% for k,v in teams.items %}
@@ -37,7 +37,7 @@
 				<div id="collapse{{ k }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby ="heading{{ k }}">
 					<div class="panel-body">
 					{% for p in v.players %}
-						<div id="row">
+						<div class="row">
 							<div class="col-sm-3">
 								<span>
 								<img class="image-left" src="{{ p.get_prof_pic }}" alt="{{p.player_nickname}}" height="30" width="30"/>
