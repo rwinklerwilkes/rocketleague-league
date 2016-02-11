@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
 from .models import Player, Team, Season, GameWeek
 from .models import Game, GameStats
+import json
 
 # Create your views here.
 def index(request):
@@ -134,7 +136,7 @@ def team_data(request):
         t = get_object_or_404(Team,key=team_key)
         s = Season.objects.get(slug=season_slug)
         #get all objects for players on t in season s
-        gs = GameStats.objects.filter(player__team=t,game__gameweek__season=s)
+        gs = GameStats.objects.filter(player__player_team=t,game__gameweek__season=s)
         
         #copied from other chart data view
         #out will be of the form 1,1,1,0,1
@@ -143,7 +145,7 @@ def team_data(request):
         out_list = ['goals','assists','saves','shots','points']
         legend =['Week'] + [out_list[i] for i in range(len(out)) if out[i]==1]
         for g in gs:
-            key = 'Week ' + str(gsrow.game.gameweek.number) + ' Game ' + str(gsrow.game.series_number)
+            key = 'Week ' + str(g.game.gameweek.number) + ' Game ' + str(g.game.series_number)
             if key in return_stats.keys():
                 #in there already, so add to the totals
                 for i in range(len(out)):

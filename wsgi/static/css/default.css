@@ -139,14 +139,16 @@ a:hover
 
 #chart_div
 {
+	position: absolute;
 	display: inline-block;
-	margin: 0 auto;
 }
 
 #chart_Btns
 {
 	margin: 0 auto;
 }
+
+
 /*********************************************************************************/
 /* Button Style                                                                  */
 /*********************************************************************************/
@@ -324,8 +326,11 @@ a:hover
 	
 
 #dd .dropdown-menu {
+	position: absolute;
 	top: 73px;
-	left: -3px;
+	left: 0px;
+	width: 100%;
+	min-width: 100%;
 	font-size: 0.75em;
 	margin-left: 0px;
 	background: #bcd2ee;
@@ -481,6 +486,15 @@ a:hover
 	vertical-align: top;
 }
 
+/*
+.tableentry {
+	position: absolute;
+	left: 5px;
+	margin: 5px 5px 5px 5x;
+	padding: 10px 10px;
+	clear: both;
+}
+*/
 
 /*********************************************************************************/
 /* Content                                                                       */
@@ -625,4 +639,8 @@ a:hover
 	padding: 0em 0em;
 	background: #3D3D3D;
 	color: rgba(255,255,255,0.5);
+}
+
+.clear {
+	clear: both;
 }

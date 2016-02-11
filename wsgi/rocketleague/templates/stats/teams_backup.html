@@ -38,9 +38,10 @@
 				<div id="collapse{{ k }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby ="heading{{ k }}">
 					<div class="panel-body">
 					{% for p in v.players %}
-						<div class="row tableentry">
+						<div class="row">
 							<div class="col-sm-4">
 								<span>
+								<img class="image" src="{{ p.get_prof_pic }}" alt="{{p.player_nickname}}" height="30" width="30"/>
 								{{ p.player_nickname }}
 								</span>
 							</div>
@@ -49,7 +50,7 @@
 							</div>
 						</div>
 					{% endfor %}
-					<div class="clear"></div>
+					
 					<!-- chart -->
 					<div id="chart{{k}}"></div>
 					</div>

@@ -7,6 +7,7 @@
 //	$('#triangle-up').css('border-bottom','30px solid #3D3D3D');
 //	});
 //});
+var curseason="201601";
 
 google.load('visualization','1.0',{'packages':['corechart']});
 
@@ -66,62 +67,19 @@ function drawChart(dataFromServer,divToUse) {
 	materialOptions.series = seriesPrep;
 	materialOptions.vAxes = axesPrep;
 	
-	var chart = new google.visualization.LineChart(document.getElementById('divToUse'));
+	var chart = new google.visualization.LineChart(document.getElementById(divToUse));
 
 	chart.draw(data,materialOptions);
 }
 
-
+//curseason set at top of string
+//I should probably fix that to not be hardcoded... not sure how
 $(function() {
-	$(".dropdown-menu").on('click','li a', function () {
-		var btn = $('.btn#' + $(this).parents('ul').attr('id'));
-		btn.html($(this).text() + ' <span class="caret"></span>');
-		btn.val($(this).text());
-		
-		var other = '';
-		//call function to redraw graph
-		if ($(this).parents('ul').attr('id')=='week-dropdown') {
-			other = 'season-dropdown';
-		}
-		else {
-			other = 'week-dropdown';
-		}
-		var otBtn = $('.btn#' + other);
-		
-		if (other == 'season-dropdown') {
-			chartData(otBtn.val(),btn.val(),allValues());
-		}
-		else {
-			chartData(btn.val(),otBtn.val(),allValues());
-		}
-	});
-});
-
-function allValues() {
-	var allVals = [];
-	$("#chart_Btns input").each(function () {
-		if ($(this).prop('checked')) {
-			allVals.push(1);
-		} else {
-			allVals.push(0);
-		}
-	});
-	var outstr = "";
-	for(i=0;i<allVals.length;i++) {
-		outstr += parseInt(allVals[i],10);
-		outstr += ",";
-	}
-	outstr = outstr.slice(0,-1);
-	
-	return outstr;
-}
-
-$(function () {
-	$("#chart_Btns input").click(function() {
-		var otstr = allValues();
-		var seasonbtn = $('.btn#season-dropdown').val();
-		var weekbtn = $('.btn#week-dropdown').val();
-		chartData(seasonbtn,weekbtn,otstr);
+	$("#accordion").on('click','a', function() {
+		var id = $(this).attr("id").slice(-1);
+		var defstr = "1,1,1,1,1";
+		var divstr = "chart" + id;
+		chartData(curseason,id,defstr,divstr);
 	});
 });
 
