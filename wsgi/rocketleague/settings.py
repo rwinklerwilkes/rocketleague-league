@@ -38,6 +38,8 @@ ACCOUNT_ACTIVATION_DAYS = 3 #3 days to activate account once registered
 # Application definition
 
 INSTALLED_APPS = [
+    'news',
+    'schedule',
     'stats.apps.StatsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
