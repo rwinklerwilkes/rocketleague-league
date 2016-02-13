@@ -57,6 +57,30 @@ a:hover
 */
 
 /*********************************************************************************/
+/* Button Style                                                                  */
+/*********************************************************************************/
+
+.button {
+	position: relative;
+	display: inline-block;
+	background-color: #BCD2EE;
+	border-style: 1px solid #3D3D3D;
+	border-radius: 2px;
+	min-width: 30px;
+	min-height: 30px;
+	color: #3D3D3D;
+	float: left;
+	margin: 10px 0px;
+}
+
+#uploadButton .button {
+	position: relative;
+	right: 0;
+}
+
+
+
+/*********************************************************************************/
 /* Image Style                                                                   */
 /*********************************************************************************/
 
@@ -80,8 +104,11 @@ a:hover
 
 .image-left
 {
-	float: left;
+	display: inline-block;
 	margin: 0 2em 2em 0;
+	border: 2px solid #3D3D3D;
+	width: 250px;
+	height: 250px;
 }
 
 .image-centered
@@ -97,21 +124,39 @@ a:hover
 }
 
 /*********************************************************************************/
-/* Form  Style                                                                   */
-/*********************************************************************************/
-
-#uploadButton {
-	float: left;
-	width: 49%;
-}
-
-#ProfilePicForm {
-	float: left; 
-}
-
-/*********************************************************************************/
 /* Player formatting                                                             */
 /*********************************************************************************/
+
+#id_profile_pic {
+	position: relative;
+	display: inline-block;
+}
+
+#uploadButton {
+	position: relative;
+	
+}
+
+#profile-info {
+	margin-left: 5%;
+}
+
+/* Fix the height but let the width adjust */
+#profile-news img {
+	margin: 0 auto;
+	width: auto;
+	height: 300px;
+	max-height: 300px;
+}
+
+.caption {
+	position: relative;
+	display: inline-block;
+	text-align: left;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 12pt;
+	font-weight: 300;
+}
 
 .player
 {
@@ -125,12 +170,17 @@ a:hover
 /* Login/registration formatting                                                 */
 /*********************************************************************************/
 
-#login, #register
+#login
 {
 	padding: 3em 0em 3em 0em;
 	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#register
+{
+	width: 100%;
 }
 
 /*********************************************************************************/
@@ -140,11 +190,13 @@ a:hover
 #chart_div
 {
 	display: inline-block;
+	margin-left: 10%;
 }
 
 #chart_Btns
 {
-	margin: 0 auto;
+	position: absolute;
+	left: 90%;
 }
 
 
@@ -232,12 +284,16 @@ a:hover
 
 	#logo
 	{
+		position: relative;
+		width: 100%;
+		display: inline-block;
 		padding: 0.25em 0em;
-		text-align: center;
 	}
 	
 	#logo h1
 	{
+		margin-left: 15%;
+		display: inline-block;
 		font-size: 3.5em;
 	}
 	
@@ -285,6 +341,7 @@ a:hover
 		height:	75px;
 		width: 100%;
 		background: #3D3D3D;
+		box-shadow: 0px 3px 3px #3D3D3D;
 	}
 
 	#menu
@@ -334,6 +391,7 @@ a:hover
 	font-size: 0.75em;
 	margin-left: 0px;
 	background: #bcd2ee;
+	color: #3D3D3D;
 	border-top: none;
 	border-radius: 0px;
 	text-align: left;
@@ -348,7 +406,7 @@ a:hover
 
 #dd .dropdown-menu a:hover, #dd .dropdown-menu a:active, #dd .dropdown-menu a:visited {
 	background: #BCD2EE;
-	color: #FFF;
+	color: #3D3D3D;
 	-webkit-transform: translateX(3px);
 	transform: translateX(3px);
 }
@@ -510,6 +568,22 @@ a:hover
 	padding: 0em 7em;
 }
 
+.row .col-height {
+	height: 100%;
+	display: table-cell;
+}
+
+/*********************************************************************************/
+/* Forms                                                                         */
+/*********************************************************************************/
+#user_form {
+	position: relative;
+	display: inline-block;
+	height: 100%;
+	text-align: left;
+	left: 0%;
+
+}
 
 /*********************************************************************************/
 /* Copyright                                                                     */

@@ -57,7 +57,7 @@ class Player(models.Model):
             out = round(self.lifetime_goals/self.lifetime_shots,3)
         except:
             out = 0
-        return out
+        return "{0:3.1f}%".format(out*100)
     shot_pct = property(_shot_pct)
 
     def __str__(self):
