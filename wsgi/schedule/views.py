@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from schedule.forms import UserForm, PlayerForm, ProfilePicForm, UserChangeForm
 from stats.models import Player, GameStats, Game, Season, GameWeek
+from news.models import NewsItem
 import json
 
 def register(request):
@@ -129,8 +130,11 @@ def main(request):
             seasons.append(cur_s)
     sorted(weeks)
     sorted(seasons)
+
+    #is there any active news?
+    news = NewsItem.objects.filter(currently_featured = True)
     
-    return render(request,'schedule/main.html',{'stats':gs,'player':player,'user':user,'weeks':weeks,'seasons':seasons,'pic_form':pic_form})
+    return render(request,'schedule/main.html',{'stats':gs,'player':player,'user':user,'weeks':weeks,'seasons':seasons,'pic_form':pic_form,'news':news})
 
 @login_required
 def chart_data(request):

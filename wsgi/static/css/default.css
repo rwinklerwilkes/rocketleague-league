@@ -166,6 +166,23 @@ a:hover
   	width: -webkit-calc(49%); /* support for Chrome19+ and Safari6+     */
 }
 
+.news-caption-wrapper {
+	background-color: rgba(0,0,0,0.7);
+	width: 100%;
+	z-index: 0;
+}
+
+.news-caption {
+	font-size: 8pt;
+	color: #FFF;
+	text-shadow: 3px 3px 5px #000;
+}
+
+.news-caption h3 {
+	font-size: 15pt;
+	color: #FFF;
+}
+
 /*********************************************************************************/
 /* Login/registration formatting                                                 */
 /*********************************************************************************/
