@@ -283,6 +283,7 @@ a:hover
 	#menu-wrapper
 	{
 		height:	75px;
+		width: 100%;
 		background: #3D3D3D;
 	}
 

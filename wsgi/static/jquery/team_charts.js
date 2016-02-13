@@ -39,7 +39,6 @@ function drawChart(dataFromServer,divToUse) {
 	
 	for(i=1;i<stats[0].length;i++)
 	{
-		console.log(stats[0][i]);
 		data.addColumn('number',stats[0][i]);
 		if (stats[0][i]==='points') {
 			var j = i -1;
@@ -50,8 +49,6 @@ function drawChart(dataFromServer,divToUse) {
 			seriesPrep[j] = {targetAxisIndex:0};
 		}
 	}
-	console.log(seriesPrep);
-	console.log(axesPrep);
 
 	for (i=1;i<stats.length;i++) {
 		data.addRow(stats[i]);
@@ -67,6 +64,7 @@ function drawChart(dataFromServer,divToUse) {
 	materialOptions.series = seriesPrep;
 	materialOptions.vAxes = axesPrep;
 	
+	console.log(divToUse);
 	var chart = new google.visualization.LineChart(document.getElementById(divToUse));
 
 	chart.draw(data,materialOptions);

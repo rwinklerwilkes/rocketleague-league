@@ -137,6 +137,7 @@ def team_data(request):
         s = Season.objects.get(slug=season_slug)
         #get all objects for players on t in season s
         gs = GameStats.objects.filter(player__player_team=t,game__gameweek__season=s)
+
         
         #copied from other chart data view
         #out will be of the form 1,1,1,0,1
@@ -146,27 +147,28 @@ def team_data(request):
         legend =['Week'] + [out_list[i] for i in range(len(out)) if out[i]==1]
         for g in gs:
             key = 'Week ' + str(g.game.gameweek.number) + ' Game ' + str(g.game.series_number)
-            if key in return_stats.keys():
-                #in there already, so add to the totals
-                for i in range(len(out)):
-                    counter = 0
-                    if out[i]==1:
-                        return_stats[key][counter]+=getattr(g,out_list[i])
-                        counter+=1
-            else:
-                return_stats[key] = []
-                for i in range(len(out)):
-                    if out[i]==1:
-                        return_stats[key].append(getattr(g,out_list[i]))
+            #an earlier teammate hasn't been seen (first time we've seen this week)
+            if key not in return_stats:
+                #add the key
+                return_stats[key] = [0 for i in range(len(out))]
+            for i in range(len(out)):
+                if out[i]==1:
+                    return_stats[key][i]+=getattr(g,out_list[i])
+            
         #so, return_stats should now look like {'Week 1 Game 1':[3,2,0,8,1500],...}
         #going to put it in a similar form to the other output from the other chart view (in schedule)
         return_stats_list = [legend]
         for k,v in return_stats.items():
             cur_list = v
-            cur_list.insert(0,k)
-            return_stats_list.append(cur_list)
+            #fix the list, since we may not want all of the items
+            fixed_list = [cur_list[i] for i in range(len(out)) if out[i] > 0]
+            fixed_list.insert(0,k)
+            return_stats_list.append(fixed_list)
 
-        rdict = {'stats':return_stats_list}
+        return_stats_list_sorted = [legend]
+        return_stats_list_sorted += sorted(return_stats_list[1:],key=lambda x:x[0])
+
+        rdict = {'stats':return_stats_list_sorted}
 
     else:
         rdict = {'stats':[]}
