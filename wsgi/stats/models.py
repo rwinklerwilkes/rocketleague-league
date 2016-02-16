@@ -93,6 +93,8 @@ class Game(models.Model):
     away_team = models.ForeignKey(Team,related_name='away_games')
     away_team_score = models.PositiveSmallIntegerField(default=0)
 
+    summary = models.TextField(default="Game")
+
     def __str__(self):
         return '%s vs. %s Game %i'%(self.home_team,self.away_team,self.series_number)
 
