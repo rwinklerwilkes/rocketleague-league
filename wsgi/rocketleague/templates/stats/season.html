@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load season_extras %}
 
 {% block extra_header %}
 
@@ -27,7 +28,7 @@
 {% block content %}
 
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-md-6 col-sm-12">
 		<h1> Season Results </h1>
 		<table id="fixture-table" class="table table-bordered">
 		<tr>
@@ -59,11 +60,41 @@
 		{% endfor %}
 		</table>
 	</div>
-</div>
-<div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-md-6 col-sm-12">
 		<div id="calendar-wrapper">
 			<div id="calendar"></div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<!-- Collapse for each week -->
+	<div class="col-md-6 col-md-offset-3 col-sm-12">
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+		{% for k,v in games.items|dict_sort %}
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="heading{{ k }}">
+					<h4 class="panel-title">
+						<a role="button" data-toggle="collapse" data-parent="accordion" id ="click{{k}}" href="#collapse{{ k }}" aria-expanded="true" aria-controls="collapse{{ k }}">
+						Week {{ k }}
+						</a>
+					</h4>
+				</div>
+				<div id="collapse{{ k }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby ="heading{{ k }}">
+					<div class="panel-body">
+					{% for g in v %}
+						<div class="row">
+							{{ g }}
+						</div>
+					{% endfor %}
+					<div class="clear"></div>
+					<!-- chart -->
+					<div id="chart{{k}}"></div>
+					</div>
+				</div>
+				
+			</div>
+		{% endfor %}
 		</div>
 	</div>
 </div>

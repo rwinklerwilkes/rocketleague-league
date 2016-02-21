@@ -77,6 +77,12 @@ def season(request,season_slug):
     #print(output)
     output = sorted(output,key=lambda l:l[1],reverse=True)
     #print(output)
+
+    games = {}
+    #get the week:game mapping
+    for w in weeks:
+        games[str(w.number)] = sorted(w.game_set.all(),key=lambda x: (x.home_team.name,x.away_team.name,x.series_number))
+    
     return render(request,'stats/season.html',{'season':season,'weeks':weeks,'games':games,'table':output})
 
 def week(request,season_slug,week_number):
